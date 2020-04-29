@@ -14,7 +14,7 @@ public class BMPtoJPEGImage extends ImageHandler {
             System.out.println(nombre+"de bmp a jpg");
             this.copyname ="TEMP\\JPG\\"+"converted-"+nombre;
             
-            
+            /*nel*/
 	}
 	public void readFile() throws Exception {
 		FileInputStream input = new FileInputStream(this.handledFileName);
