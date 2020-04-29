@@ -3,17 +3,18 @@ package fotos;
 import fotos.ImageHandler;
 import java.io.*;
 
-public class JPEGtoBMPImage extends ImageHandler {
+public class BMPtoJPEGImage extends ImageHandler {
+        
 	protected byte[] filebytes;
 	protected String copyname;
-        JTemp temp= new JTemp();
-	public JPEGtoBMPImage(String imagename) {
+        static String urls;
+	public BMPtoJPEGImage(String imagename) {
             super(imagename);
-            String nombre=imagename.substring(imagename.lastIndexOf("\\")+1,+imagename.lastIndexOf(".jpg"))+".bmp";
-            System.out.println(nombre+" de jpg a bmp");
-            this.copyname ="TEMP\\BMP\\"+"converted-"+nombre;
+            String nombre=imagename.substring(imagename.lastIndexOf("\\")+1,+imagename.lastIndexOf(".bmp"))+".jpg";
+            System.out.println(nombre+"de bmp a jpg");
+            this.copyname ="TEMP\\JPG\\"+"converted-"+nombre;
             
-            temp.setUrl(copyname);
+            
 	}
 	public void readFile() throws Exception {
 		FileInputStream input = new FileInputStream(this.handledFileName);

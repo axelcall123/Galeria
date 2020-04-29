@@ -2,6 +2,8 @@ package fotos;
 
 import static fotos.ingresarBiblioteca.bin;
 import java.io.File;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ver extends javax.swing.JFrame {
     
@@ -136,19 +138,27 @@ public class ver extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox2ActionPerformed
     static int idVeces=0;
     private void ingBiblio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio1ActionPerformed
-        String Tusuario= (String) this.jComboBox1.getSelectedItem();
+        BmpHandlerCopy h= new BmpHandlerCopy("XD//HOLA//TEMP//copy-1.jpg");
+        /*try {
+            h.readFile();
+            h.generateFiles();
+        } catch (Exception ex) {
+            Logger.getLogger(ver.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
+        
+        /*String Tusuario= (String) this.jComboBox1.getSelectedItem();
         int idUsuario=(int) this.jComboBox1.getSelectedIndex();
         ayudaUsuario=leeer;
         for (int a = 0; a < ayudaUsuario.getTamaño(); a++) {
             VerayudaUsuario.insertarInicio(ayudaUsuario.obtenerNombre(a), (dobleEnlazada) ayudaUsuario.obtenerNodo(a));
-            System.out.println("NOMBRE USER: "+ayudaUsuario.obtenerNombre(a) +" ID: "+a/*+ " ;; " + ayudaUsuario.obtenerNodo(a)*/);
-            ayudaCarpeta = (dobleEnlazada) ayudaUsuario.obtenerNodo(a);
+            System.out.println("NOMBRE USER: "+ayudaUsuario.obtenerNombre(a) +" ID: "+a/*+ " ;; " + ayudaUsuario.obtenerNodo(a)*//*);
+            /*ayudaCarpeta = (dobleEnlazada) ayudaUsuario.obtenerNodo(a);
             jComboBox1.addItem("NOMBRE USER: "+ayudaUsuario.obtenerNombre(a));
             System.out.println();
             for (int b = 0; b < ayudaCarpeta.getTamaño(); b++) {
                 VerayudaCarpeta.insertarInicio(ayudaCarpeta.obtenerNombre(b), (dobleEnlazada) ayudaCarpeta.obtenerNodo(b));
-                System.out.println("    NOMBRE CARPETA: "+ayudaCarpeta.obtenerNombre(b)+" ID: "+b/*+" ;; "+ayudaCarpeta.obtenerNodo(b)*/);
-                System.out.println();
+                System.out.println("    NOMBRE CARPETA: "+ayudaCarpeta.obtenerNombre(b)+" ID: "+b/*+" ;; "+ayudaCarpeta.obtenerNodo(b)*//*);
+                /*System.out.println();
                 jComboBox2.addItem("NOMBRE CARPETA: "+ayudaCarpeta.obtenerNombre(b)+" ;; NOMBRE USER: "+ayudaUsuario.obtenerNombre(a));
                 ayudaImagen=(dobleEnlaCir) ayudaCarpeta.obtenerNodo(b);
                 for (int c = 0; c < ayudaImagen.getTamaño(); c++) {
@@ -158,7 +168,7 @@ public class ver extends javax.swing.JFrame {
                     jComboBox3.addItem(nombre+" ;; NOMBRE CARPETA: "+ayudaCarpeta.obtenerNombre(b)+" ;; NOMBRE USER: "+ayudaUsuario.obtenerNombre(a));
                 }
             }
-        }
+        }*/
         idVeces++;
     }//GEN-LAST:event_ingBiblio1ActionPerformed
 

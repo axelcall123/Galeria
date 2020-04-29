@@ -15,4 +15,12 @@ public class JTemp {
     public void setIdArhcivo(int IDARCHIVO){
         this.idArchivo=IDARCHIVO;
     }
+    
+    static String url;
+    public String getUrl(){
+        return url;
+    }
+    public void setUrl(String Url){
+        this.url=Url;
+    }
 }

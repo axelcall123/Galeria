@@ -4,7 +4,6 @@ import static fotos.vPrincipal.usuariosID;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.ImageIcon;
-import javax.swing.DefaultListModel;  
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -219,31 +218,31 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         archivo = ventana.Cargar.getSelectedFile();
         //URLS
         String url = archivo.getPath();//URL
+        //String nuevaUrl=url.substring(url.lastIndexOf("D:")+0,+url.lastIndexOf(".jpg"))+".bmp";
+        String nuevaUrl="BMP\\"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".bmp";
         String nombre = archivo.getName();//NOMBRE
-        //String nuevaUrl=url.substring(url.lastIndexOf("D:")+0,url.lastIndexOf(".jpg"))+".bmp";//URL DE LA NUEVA IMAGEN
+        System.out.println(url+" ;; "+nuevaUrl);
         //OBTENER IMAGEN
         Picture.setIcon(new ImageIcon(url)); 
-       // System.out.println("URL ANTIGUA: "+url+" ;; NOMBRE: "+nombre+" ; NUEVA URL"+nuevaUrl);
-        System.out.println();
-        System.out.println();
         this.Titulo.setText(nombre);//TITULO DE LA IMAGEN
         //GUARDAR
         imagen.insertarFinal(archivo);
          /*492,358*/
         ImageIcon icon = new ImageIcon(url);
         this.Picture.setIcon(icon);
+        
         Convertir conv = new Convertir();
-        /*try {
+        try {
             boolean result = conv.convertFormat(url,nuevaUrl, "BMP");
         } catch (IOException ex) {
             System.out.println("ERROR");
             ex.printStackTrace();
-        }*/
-        //JPEGtoBMPImage bmp= new JPEGtoBMPImage("1.bmp");CONFLICTO CON LAS IMGS
+        }
+        //JPEGtoBMPImage bmp= new JPEGtoBMPImage(url)
         //archivo.delete();
         //ImageIcon icon = new ImageIcon(nuevaUrl);
         //this.Picture.setIcon(icon);
-        //System.out.println("ID: "+idCarpeta);
+        System.out.println("ID: "+idCarpeta);
         correrImagen++;
         idImagen++;
     }//GEN-LAST:event_jToggleButton1ActionPerformed

@@ -163,7 +163,8 @@ public class vPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_ingBiblioActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        
+        new editor().setVisible(true);
+        dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     private void ingBiblio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio1ActionPerformed
