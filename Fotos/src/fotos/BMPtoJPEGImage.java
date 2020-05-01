@@ -28,6 +28,7 @@ public class BMPtoJPEGImage extends ImageHandler {
 		output.write(filebytes);
 		output.close();
 		System.out.println("Imagen generada: " + copyname);
+                
                
 	}
 }

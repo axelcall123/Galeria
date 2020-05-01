@@ -1,10 +1,12 @@
 
 package fotos;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -127,8 +129,8 @@ public class editor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    File archivo;
-   
+    static File archivo;
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Guardar ventana = new Guardar();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG , PNG y BMP", "jpg", "png","bmp");
@@ -200,11 +202,30 @@ public class editor extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }
-            }else if(this.jD.isSelected()==true){//TERCER BOTON
+            }else if(this.jT.isSelected()==true){//TERCER BOTON
                 String nombre=archivo.getName();
                 String extension=nombre.substring(nombre.lastIndexOf(".")+1);
+                if(extension.toUpperCase().equals("JPG")){
+                    JPEGtoBMPImage bmp= new JPEGtoBMPImage(archivo.getPath().toString());
+                    try {
+                        bmp.readFile();
+                        bmp.generateFiles();
+                    } catch (Exception ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JTemp temp= new JTemp();
+                    /*File nuevaImagen= new File(temp.getUrl());//OBTINE LA IMAGEN BMP
+                    try {
+                        BufferedImage imagenNew= ImageIO.read(nuevaImagen);
+                        actualImagen= imagenNew;
+                    } catch (IOException ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }*/
+                }else{
+                    JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
+                }
             }
-
+            
             System.out.println();
         }
     }//GEN-LAST:event_jButton1ActionPerformed

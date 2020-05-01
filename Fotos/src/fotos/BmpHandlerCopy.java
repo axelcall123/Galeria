@@ -41,4 +41,6 @@ public class BmpHandlerCopy extends ImageHandler {
 		System.out.println("Imagen generada: " + copyname);
                 
 	}
+        
+        
 }
