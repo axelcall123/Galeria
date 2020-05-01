@@ -200,7 +200,11 @@ public class editor extends javax.swing.JFrame {
                 }else{
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }
+            }else if(this.jD.isSelected()==true){//TERCER BOTON
+                String nombre=archivo.getName();
+                String extension=nombre.substring(nombre.lastIndexOf(".")+1);
             }
+
             System.out.println();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
