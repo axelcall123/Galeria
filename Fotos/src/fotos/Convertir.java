@@ -1,5 +1,5 @@
-package fotos;
-
+/*package fotos;
+CLASE DE CODIGO MUERTO
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -15,4 +15,4 @@ public class Convertir {
         boolean result=ImageIO.write(input_image, extension, outputfile); //REGRESA FALSO O VERDADERO SI EJECUTO
         return result;
     }  
-}
+}*/ 

@@ -1,10 +1,34 @@
 package fotos;
 
 import fotos.ImageHandler;
-import java.io.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import javax.imageio.ImageIO;
 
-public class BMPtoJPEGImage extends ImageHandler {
+public class BMPtoJPEGImage extends ImageHandler {  
+	protected String copyname;
+        JTemp temp= new JTemp();
+        static String url;
+        BufferedImage input_image = null;
         
+	public BMPtoJPEGImage(String imagename) {
+            super(imagename);
+            url=imagename;
+            String nombre=imagename.substring(imagename.lastIndexOf("\\")+1,+imagename.lastIndexOf(".bmp"))+".jpg";
+            System.out.println(nombre+"de bmp a jpg");
+            this.copyname ="TEMP\\JPG\\"+"converted-"+nombre;
+	}
+	public void readFile() throws Exception {
+		input_image = ImageIO.read(new File(url));
+                System.out.println("Imagen leida: " + this.handledFileName);
+	}
+	public void generateFiles() throws Exception {
+               File outputfile = new File(copyname); //CREA EL BMP
+               boolean result=ImageIO.write(input_image, "BMP", outputfile);
+               System.out.println("Imagen generada: " + copyname);
+	}
+}/*
+
 	protected byte[] filebytes;
 	protected String copyname;
         static String urls;
@@ -13,8 +37,7 @@ public class BMPtoJPEGImage extends ImageHandler {
             String nombre=imagename.substring(imagename.lastIndexOf("\\")+1,+imagename.lastIndexOf(".bmp"))+".jpg";
             System.out.println(nombre+"de bmp a jpg");
             this.copyname ="TEMP\\JPG\\"+"converted-"+nombre;
-            
-            /*nel*/
+
 	}
 	public void readFile() throws Exception {
 		FileInputStream input = new FileInputStream(this.handledFileName);
@@ -31,4 +54,4 @@ public class BMPtoJPEGImage extends ImageHandler {
                 
                
 	}
-}
+*/

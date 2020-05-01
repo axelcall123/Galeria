@@ -219,7 +219,7 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         //URLS
         String url = archivo.getPath();//URL
         //String nuevaUrl=url.substring(url.lastIndexOf("D:")+0,+url.lastIndexOf(".jpg"))+".bmp";
-        String nuevaUrl="BMP\\"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".bmp";
+        String nuevaUrl="DES\\"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".jpg";//DA LO MISM JPG O BMP
         String nombre = archivo.getName();//NOMBRE
         System.out.println(url+" ;; "+nuevaUrl);
         //OBTENER IMAGEN
@@ -231,14 +231,15 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(url);
         this.Picture.setIcon(icon);
         
-        Convertir conv = new Convertir();
+        /*Convertir conv = new Convertir();
         try {
             boolean result = conv.convertFormat(url,nuevaUrl, "BMP");
         } catch (IOException ex) {
             System.out.println("ERROR");
             ex.printStackTrace();
-        }
-        //JPEGtoBMPImage bmp= new JPEGtoBMPImage(url)
+        }*/
+        
+        
         //archivo.delete();
         //ImageIcon icon = new ImageIcon(nuevaUrl);
         //this.Picture.setIcon(icon);

@@ -205,7 +205,7 @@ public class editor extends javax.swing.JFrame {
             }else if(this.jT.isSelected()==true){//TERCER BOTON
                 String nombre=archivo.getName();
                 String extension=nombre.substring(nombre.lastIndexOf(".")+1);
-                if(extension.toUpperCase().equals("JPG")){
+                if(extension.toUpperCase().equals("JPG")){//SI ES JPG O NO
                     JPEGtoBMPImage bmp= new JPEGtoBMPImage(archivo.getPath().toString());
                     try {
                         bmp.readFile();
@@ -214,13 +214,13 @@ public class editor extends javax.swing.JFrame {
                         Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     JTemp temp= new JTemp();
-                    /*File nuevaImagen= new File(temp.getUrl());//OBTINE LA IMAGEN BMP
+                    JPEGImageHandlerColors sepia= new JPEGImageHandlerColors(temp.getUrl());//NUEVA URL
                     try {
-                        BufferedImage imagenNew= ImageIO.read(nuevaImagen);
-                        actualImagen= imagenNew;
-                    } catch (IOException ex) {
+                        sepia.readFile();
+                        sepia.generateFiles();
+                    } catch (Exception ex) {
                         Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
-                    }*/
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }

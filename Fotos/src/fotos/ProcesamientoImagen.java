@@ -58,7 +58,7 @@ public class ProcesamientoImagen {
                 //Almacenamos el color del píxel
                 colorAux=new Color(this.imageActual.getRGB(i, j));
                 //Calculamos la media de los tres canales (rojo, verde, azul)
-               // mediaPixel=(int)((colorAux.getRed()+colorAux.getGreen()+colorAux.getBlue())/3);
+                mediaPixel=(int)((colorAux.getRed()+colorAux.getGreen()+colorAux.getBlue())/3);
                 //Cambiamos a formato sRGB
                 //colorSRGB=(mediaPixel << 16) | (mediaPixel << 8) | mediaPixel;
                 //Asignamos el nuevo valor al BufferedImage
