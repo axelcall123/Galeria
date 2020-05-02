@@ -1,5 +1,5 @@
 package fotos;
-
+/*holis*/
 import fotos.ImageHandler;
 import java.awt.image.BufferedImage;
 import java.io.File;
