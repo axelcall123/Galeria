@@ -12,7 +12,7 @@ import java.io.*;
 *
 *	@author Jorge Daniel Monterroso Nowell - @jorged104
 *	@version 1.0
-**/
+**///CREA UNA COPIA BMP y JPG
 public class BmpHandlerCopy extends ImageHandler {
 	protected byte[] filebytes;
 	protected String copyname;

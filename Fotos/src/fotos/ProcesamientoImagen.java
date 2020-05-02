@@ -1,5 +1,5 @@
 package fotos;
-
+//SIRVE PARA PROCESAR LA IMAGEN COMO EJEMPLO NO SRIVE EL EL PROGRAMA EN GENERAL
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;
