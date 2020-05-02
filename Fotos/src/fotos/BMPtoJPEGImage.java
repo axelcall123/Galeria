@@ -4,7 +4,7 @@ import fotos.ImageHandler;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import javax.imageio.ImageIO;
-
+/*otro tes para ver no mas*/
 public class BMPtoJPEGImage extends ImageHandler {  
 	protected String copyname;
         JTemp temp= new JTemp();
