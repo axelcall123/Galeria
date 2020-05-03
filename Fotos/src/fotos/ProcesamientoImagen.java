@@ -60,12 +60,14 @@ public class ProcesamientoImagen {
                 //Calculamos la media de los tres canales (rojo, verde, azul)
                 mediaPixel=(int)((colorAux.getRed()+colorAux.getGreen()+colorAux.getBlue())/3);
                 //Cambiamos a formato sRGB
-                //colorSRGB=(mediaPixel << 16) | (mediaPixel << 8) | mediaPixel;
+                colorSRGB=(mediaPixel << 16) | (mediaPixel << 8) | mediaPixel;
                 //Asignamos el nuevo valor al BufferedImage
-                //imageActual.setRGB(i, j,colorSRGB);
+                imageActual.setRGB(i, j,colorSRGB);
             }
         }
         //Retornamos la imagen
         return imageActual;
     }
+    
+    
 }

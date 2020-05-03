@@ -4,10 +4,6 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-/**
- *
- * @author Marcelo
- */
 public class BinManager {
     
     private ObjectInputStream ois;
