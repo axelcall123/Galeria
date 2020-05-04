@@ -2,9 +2,10 @@ package fotos;
 public class Fotos {
     public static void main(String[] args) {
         new vPrincipal().setVisible(true);
-        ProcesamientoImagen bmp= new ProcesamientoImagen();
+        
+       /* ProcesamientoImagen bmp= new ProcesamientoImagen();
         bmp.abrirImagen();
-        bmp.escalaGrises();
+        bmp.escalaGrises();*/
         /*Enlazada enlaA= new Enlazada();
         for(int z=0;z<10;z++){
             enlaA.insertarInicio(z);
