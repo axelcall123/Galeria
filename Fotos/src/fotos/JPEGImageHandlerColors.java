@@ -90,7 +90,7 @@ public class JPEGImageHandlerColors extends ImageHandler {
                     }else{
                         s=(max+min)/(2-(max+min));
                     }
-                    System.out.println(s);
+                    //System.out.println(s);
                     Color hsl=Color.getHSBColor(32, s, l);
                     imagenActual.setRGB(a, b,hsl.getRGB());
                     //posicion++;
@@ -98,12 +98,42 @@ public class JPEGImageHandlerColors extends ImageHandler {
                 }
              }
              File outputfile = new File(copyname);
-             boolean result=ImageIO.write(imagenActual, "jpg", outputfile);
+             boolean result=ImageIO.write(imagenActual, "bmp", outputfile);
              System.out.println("se acabo");
 	}
     
 }
-
+/*
+                    colorOriginal=new Color(this.imagenActual.getRGB(a, b));
+                    /*IMAGEN AZUL imagenActual.setRGB(a, b,promedio);
+                     promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
+                    imagenActual.setRGB(b, promedio,a);
+                    */
+                    /*IMAGEN ROJO
+                    promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
+                    colorSRGB=(promedio << 16) | (promedio << 16) | (promedio<<16);
+                    imagenActual.setRGB(a, b,colorSRGB);*/
+                    /*MORADO 0,0,16*/
+                    /*
+                    0 azul o 0,0,0,
+                    16 rojo o 16,16,16
+                    8 verde o 8,8,8
+                    16,8,16 amarillo o 16,8
+                    8,0,0 celeste
+                    */
+                    //colorSRGB=(colorOriginal.getRed() << 1)|(colorOriginal.getGreen() <<1)|(colorOriginal.getBlue() <<1);
+                    /*int green=(int) (colorOriginal.getGreen()*0.59);
+                    int blue= (int) (colorOriginal.getBlue()*0.49);
+                    int rgb=new Color(102,green,blue).getRGB();
+                    imagenActual.setRGB(a, b, rgb);
+                    //posicion++;
+                        
+                }
+             }
+             File outputfile = new File(copyname);
+             boolean result=ImageIO.write(imagenActual, "BMP", outputfile);
+             System.out.println("se acabo"); 
+*/
  /* int promedio;
              int colorSRGB;
              int posicion=0;
