@@ -229,7 +229,7 @@ public class editor extends javax.swing.JFrame {
                     
                     File eliminar= new File(temp.getUrl());
                     System.out.println(eliminar.getPath()+ " ulr a elminar");
-                    eliminar.delete();
+                    //eliminar.delete();
                 }else{
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }
