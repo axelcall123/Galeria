@@ -15,7 +15,7 @@ public class Guardar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Cargar.setCurrentDirectory(new java.io.File("D:\\ALEX\\U\\REPOSITORIOS GITHUB\\imgs\\NORMAL"));
+        Cargar.setCurrentDirectory(new java.io.File("D:\\AXEL\\DOCUMENTOS\\U\\GITHUB\\imgs\\NORMAL"));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

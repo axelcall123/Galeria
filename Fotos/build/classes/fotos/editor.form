@@ -123,6 +123,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Rojo Verde Azul Sepia"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jC">
           <Properties>

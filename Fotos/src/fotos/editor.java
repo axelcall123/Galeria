@@ -45,6 +45,11 @@ public class editor extends javax.swing.JFrame {
         jD.setText("copia JPEG");
 
         jT.setText("Rojo Verde Azul Sepia");
+        jT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTActionPerformed(evt);
+            }
+        });
 
         jC.setText("Modifica imagen");
 
@@ -224,7 +229,7 @@ public class editor extends javax.swing.JFrame {
                     
                     File eliminar= new File(temp.getUrl());
                     System.out.println(eliminar.getPath()+ " ulr a elminar");
-                    //eliminar.delete();
+                    eliminar.delete();
                 }else{
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }
@@ -237,6 +242,10 @@ public class editor extends javax.swing.JFrame {
     private void jUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jUActionPerformed
+
+    private void jTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTActionPerformed
     
 
     /**
