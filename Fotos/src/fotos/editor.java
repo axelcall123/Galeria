@@ -52,6 +52,11 @@ public class editor extends javax.swing.JFrame {
         });
 
         jC.setText("Modifica imagen");
+        jC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCActionPerformed(evt);
+            }
+        });
 
         jCin.setText("Blacno y negro");
 
@@ -234,6 +239,56 @@ public class editor extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
                 }
             }
+            else if(this.jC.isSelected()==true){//TERCER BOTON
+                String nombre=archivo.getName();//NOMBRE
+                String extension=nombre.substring(nombre.lastIndexOf(".")+1);//ESXTENSION
+                if(extension.toUpperCase().equals("JPG")){//SI ES JPG O NO
+                    JPEGtoBMPImage bmp= new JPEGtoBMPImage(archivo.getPath().toString());
+                    try {
+                        bmp.readFile();//GENERA PRIMERO EL ARCHIVO BMP
+                        bmp.generateFiles();
+                    } catch (Exception ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JTemp temp= new JTemp();
+                    JPEGImageHandlerRotator rotar= new JPEGImageHandlerRotator(temp.getUrl());
+                    try {
+                        rotar.readFile();
+                        rotar.generateFiles();
+                    } catch (Exception ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    File eliminar= new File(temp.getUrl());
+                    System.out.println(eliminar.getPath()+ " ulr a elminar");
+                }else{
+                    JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
+                }
+            }
+            else if(this.jCin.isSelected()==true){//TERCER BOTON
+                String nombre=archivo.getName();//NOMBRE
+                String extension=nombre.substring(nombre.lastIndexOf(".")+1);//ESXTENSION
+                if(extension.toUpperCase().equals("JPG")){//SI ES JPG O NO
+                    JPEGtoBMPImage bmp= new JPEGtoBMPImage(archivo.getPath().toString());
+                    try {
+                        bmp.readFile();//GENERA PRIMERO EL ARCHIVO BMP
+                        bmp.generateFiles();
+                    } catch (Exception ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    JTemp temp= new JTemp();
+                    JPEGImageHandlerBN bn= new JPEGImageHandlerBN(temp.getUrl());
+                    try {
+                        bn.readFile();
+                        bn.generateFiles();
+                    } catch (Exception ex) {
+                        Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    File eliminar= new File(temp.getUrl());
+                    System.out.println(eliminar.getPath()+ " ulr a elminar");
+                }else{
+                    JOptionPane.showMessageDialog(null, "ES UNA IMAGEN BMP");
+                }
+            }
             
             System.out.println();
         }
@@ -246,6 +301,10 @@ public class editor extends javax.swing.JFrame {
     private void jTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTActionPerformed
+
+    private void jCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCActionPerformed
     
 
     /**

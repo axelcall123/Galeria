@@ -9,7 +9,7 @@ import javax.imageio.ImageIO;
 
 public class JPEGImageHandlerColors extends ImageHandler {
         protected String copyname;
-        protected BufferedImage imagenActual;
+        static BufferedImage imagenRojo,imagenVerde,imagenAzul,imagenSepia;
         JTemp temp= new JTemp();
 	public JPEGImageHandlerColors(String imagename) {
             super(imagename);
@@ -19,7 +19,10 @@ public class JPEGImageHandlerColors extends ImageHandler {
 	public void readFile() throws Exception {
             File nuevaImagen= new File(temp.getUrl());//OBTINE LA IMAGEN BMP
             BufferedImage imagenNew= ImageIO.read(nuevaImagen);
-            imagenActual= imagenNew;
+            imagenRojo= imagenNew;
+            imagenVerde= imagenNew;
+            imagenAzul= imagenNew;
+            imagenSepia= imagenNew;
             System.out.println("Imagen leida: " + this.handledFileName);
 	}
         
@@ -29,11 +32,47 @@ public class JPEGImageHandlerColors extends ImageHandler {
              String obtenerNombre,nuevaUrl,JPG;
              File outputfile;
              boolean result;
+             obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);
+             
+
+            //COLOR AZUL
+             for(int a=0;a<imagenAzul.getWidth();a++){
+                for(int b=0;b<imagenAzul.getHeight();b++){
+                    colorOriginal=new Color(this.imagenAzul.getRGB(a, b));
+                    promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
+                    colorSRGB=(promedio << 0)|(promedio << 0)|(promedio << 0);
+                    imagenAzul.setRGB(a, b,colorSRGB);    
+                }
+             }
+             
+             nuevaUrl="TEMP\\JPG\\"+"azul-"+obtenerNombre;
+             JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
+             nuevaUrl="TEMP\\JPG\\"+JPG;
+             outputfile = new File(nuevaUrl);
+             result=ImageIO.write(imagenAzul, "jpg", outputfile);
+             
+             
+             //COLOR SEPIA
+            for(int a=0;a<imagenSepia.getWidth();a++){
+                for(int b=0;b<imagenSepia.getHeight();b++){
+                    colorOriginal=new Color(this.imagenSepia.getRGB(a, b));
+                    int green=(int) (colorOriginal.getGreen()*0.59);
+                    int blue= (int) (colorOriginal.getBlue()*0.49);
+                    int rgb=new Color(102,green,blue).getRGB();
+                    imagenSepia.setRGB(a, b, rgb);
+                }
+             }
+            nuevaUrl="TEMP\\JPG\\"+"sepia-"+obtenerNombre;
+            JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
+            nuevaUrl="TEMP\\JPG\\"+JPG;
+            outputfile = new File(nuevaUrl);
+            result=ImageIO.write(imagenSepia, "jpg", outputfile);
+            System.out.println("se acabo"); 
              
              //COLOR ROJO
-            for(int a=0;a<imagenActual.getWidth();a++){
-                for(int b=0;b<imagenActual.getHeight();b++){
-                    colorOriginal=new Color(this.imagenActual.getRGB(a, b));
+            for(int a=0;a<imagenRojo.getWidth();a++){
+                for(int b=0;b<imagenRojo.getHeight();b++){
+                    colorOriginal=new Color(this.imagenRojo.getRGB(a, b));
                     //0 azul o 0,0,0,
                     //16 rojo o 16,16,16
                     //8 verde o 8,8,8
@@ -42,62 +81,31 @@ public class JPEGImageHandlerColors extends ImageHandler {
                     //morado 0,0,16
                     promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
                     colorSRGB=(promedio << 16);
-                    imagenActual.setRGB(a, b,colorSRGB);    
+                    imagenRojo.setRGB(a, b,colorSRGB);    
                 }
              }
-             obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);
              nuevaUrl="TEMP\\JPG\\"+"rojo-"+obtenerNombre;
              JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
              nuevaUrl="TEMP\\JPG\\"+JPG;
              outputfile = new File(nuevaUrl);
-             result=ImageIO.write(imagenActual, "jpg", outputfile);
+             result=ImageIO.write(imagenRojo, "jpg", outputfile);
              
              //COLOR VERDE
-             for(int a=0;a<imagenActual.getWidth();a++){
-                for(int b=0;b<imagenActual.getHeight();b++){
-                    colorOriginal=new Color(this.imagenActual.getRGB(a, b));
+             for(int a=0;a<imagenVerde.getWidth();a++){
+                for(int b=0;b<imagenVerde.getHeight();b++){
+                    colorOriginal=new Color(this.imagenVerde.getRGB(a, b));
                     promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
                     colorSRGB=(promedio << 8);
-                    imagenActual.setRGB(a, b,colorSRGB);    
+                    imagenVerde.setRGB(a, b,colorSRGB);    
                 }
              }
              nuevaUrl="TEMP\\JPG\\"+"verde-"+obtenerNombre;
              JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
              nuevaUrl="TEMP\\JPG\\"+JPG;
              outputfile = new File(nuevaUrl);
-             result=ImageIO.write(imagenActual, "jpg", outputfile);
-
-             //COLOR AZUL
-             for(int a=0;a<imagenActual.getWidth();a++){
-                for(int b=0;b<imagenActual.getHeight();b++){
-                    colorOriginal=new Color(this.imagenActual.getRGB(a, b));
-                    promedio=(colorOriginal.getRed()+colorOriginal.getGreen()+colorOriginal.getBlue())/3;
-                    colorSRGB=(promedio << 0)|(promedio << 0)|(promedio << 0);
-                    imagenActual.setRGB(a, b,colorSRGB);    
-                }
-             }
-             nuevaUrl="TEMP\\JPG\\"+"azul-"+obtenerNombre;
-             JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
-             nuevaUrl="TEMP\\JPG\\"+JPG;
-             outputfile = new File(nuevaUrl);
-             result=ImageIO.write(imagenActual, "jpg", outputfile);
-             
-            //COLOR SEPIA
-            for(int a=0;a<imagenActual.getWidth();a++){
-                for(int b=0;b<imagenActual.getHeight();b++){
-                   colorOriginal=new Color(this.imagenActual.getRGB(a, b));
-                    int green=(int) (colorOriginal.getGreen()*0.59);
-                    int blue= (int) (colorOriginal.getBlue()*0.49);
-                    int rgb=new Color(102,green,blue).getRGB();
-                    imagenActual.setRGB(a, b, rgb);
-                }
-             }
-            nuevaUrl="TEMP\\JPG\\"+"sepia-"+obtenerNombre;
-            JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
-            nuevaUrl="TEMP\\JPG\\"+JPG;
-            outputfile = new File(nuevaUrl);
-            result=ImageIO.write(imagenActual, "jpg", outputfile);
-            System.out.println("se acabo"); 
+             result=ImageIO.write(imagenVerde, "jpg", outputfile);
+  
+            
 	}        
 }
 /*/*IMAGEN AZUL imagenActual.setRGB(a, b,promedio);

@@ -131,6 +131,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Modifica imagen"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="jCin">
           <Properties>
