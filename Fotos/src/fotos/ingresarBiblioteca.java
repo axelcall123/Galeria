@@ -2,7 +2,6 @@ package fotos;
 
 import static fotos.vPrincipal.usuariosID;
 import java.io.File;
-import java.io.IOException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -13,11 +12,14 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
     public dobleEnlazada carpeta=new dobleEnlazada();
     public dobleEnlaCir imagen=new dobleEnlaCir();
     static BinManager bin = new BinManager();//ENLAZADA SIMPLE
-    static int idCarpeta;
+    
+   //static int idCarpeta;
+    
     public ingresarBiblioteca() {
         initComponents();
         this.nombreUsuario.setText(usuariosID[0].getNombre());
         this.Picture.setFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN,10));
+        carpeta.insertarFinal("GENERAL");
     }
     
     @SuppressWarnings("unchecked")
@@ -172,18 +174,19 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
                             .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(184, 184, 184)
-                                .addComponent(jButton5)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(Picture, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGap(184, 184, 184)
+                                        .addComponent(jButton5))
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3)
-                                .addGap(19, 19, 19))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(Picture, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGap(19, 19, 19))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(105, 105, 105)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -226,30 +229,24 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         Picture.setIcon(new ImageIcon(url)); 
         this.Titulo.setText(nombre);//TITULO DE LA IMAGEN
         //GUARDAR
-        imagen.insertarFinal(archivo);
-         /*492,358*/
+        //imagen.insertarFinal(archivo);
+        String categoria= (String) this.jComboBox1.getSelectedItem();
+        for(int z=0;z<carpeta.getTamaño();z++){
+            if(categoria==carpeta.obtenerNombre(z)){
+                carpeta.obtenerNodo(z).getImagen().insertarInicio(archivo);
+            }
+        }
+        
+        //492,358
         ImageIcon icon = new ImageIcon(url);
         this.Picture.setIcon(icon);
-        
-        /*Convertir conv = new Convertir();
-        try {
-            boolean result = conv.convertFormat(url,nuevaUrl, "BMP");
-        } catch (IOException ex) {
-            System.out.println("ERROR");
-            ex.printStackTrace();
-        }*/
-        
-        
-        //archivo.delete();
-        //ImageIcon icon = new ImageIcon(nuevaUrl);
-        //this.Picture.setIcon(icon);
-        System.out.println("ID: "+idCarpeta);
+       // System.out.println("ID: "+idCarpeta);
         correrImagen++;
         idImagen++;
     }//GEN-LAST:event_jToggleButton1ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        correrImagen++;
+        /*correrImagen++; FUNCIONA EN LA ANTERIOR VERSION
         if(correrImagen<imagen.getTamaño()){
             File ayuda=(File) imagen.obtenerNodo(correrImagen);//TOMA EL ELEMENTO ENCERRADO
             String url=ayuda.getPath();
@@ -265,13 +262,12 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
             this.Titulo.setText(nombre);
             System.out.println("URLs: "+url+" ;;NUM: "+correrImagen);
             this.Picture.setIcon(new ImageIcon(url));
-            
-        }
+        }*/
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       correrImagen--;//CORRER IMAGENES
+/*       correrImagen--;//CORRER IMAGENES FUNCIONA EN LA ANTERIRO VERSION
         if(correrImagen>=0){
             File ayuda=(File) imagen.obtenerNodo(correrImagen);
             String url=ayuda.getPath();
@@ -287,11 +283,11 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
             this.Titulo.setText(nombre);
             System.out.println("URLs: "+url+" ;;NUM: "+correrImagen);
             this.Picture.setIcon(new ImageIcon(url));
-        }
+        }*/
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-       String categoria= (String) this.jComboBox1.getSelectedItem();
+       /*String categoria= (String) this.jComboBox1.getSelectedItem();
        int idArchivo=(int) this.jComboBox1.getSelectedIndex();
        
        if(categoria=="GENERAL"){
@@ -305,30 +301,16 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
                }
            }
        }
-        idCarpeta--;
+        idCarpeta--;*/
     }//GEN-LAST:event_jButton3ActionPerformed
-    static String nombreCarpeta="GENERAL";
+    static String nombreCarpeta;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        /*nombreCarpeta = JOptionPane.showInputDialog("NOMBRE SU CARPETA");
-        carpeta.insertarFinal(nombreCarpeta,imagen);
-        jComboBox1.addItem(nombreCarpeta);*/
-        carpeta.insertarFinal(nombreCarpeta,imagen);
-        for(int a=0;a<idImagen;a++){
-            if(imagen.getTamaño()==1){
-                imagen.eliminar(0);
-            }else{
-                imagen.eliminar(1);
-            }
-            System.out.println(imagen.getTamaño());
-        }
         nombreCarpeta = JOptionPane.showInputDialog("NOMBRE SU CARPETA");
-        System.out.println("ID: "+idCarpeta);
+        carpeta.insertarFinal(nombreCarpeta/*,imagen*/);
+        //carpeta.getCabeza().getImagen().insertarInicio(evt);
         jComboBox1.addItem(nombreCarpeta);
         idImagen=0;
-        idCarpeta++;
-//        JPEGtoBMPImage img= new JPEGtoBMPImage();
-        
-        
+        //idCarpeta++;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -339,31 +321,36 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         System.out.println();
         for(int a=0;a<carpeta.getTamaño();a++){
             System.out.println("CARPETAS"); carpeta.ver(a);
+            System.out.println("IMAGENES: ");
+            for(int b=0;b<carpeta.obtenerNodo(a).getImagen().getTamaño();b++){
+                 System.out.println("   :"); carpeta.obtenerNodo(a).getImagen().ver(b);
+            }    
         }
         System.out.println();
-        for(int a=0;a<imagen.getTamaño();a++){
+        /*for(int a=0;a<imagen.getTamaño();a++){
            System.out.println("IMAGEN: "+a); imagen.ver(a);
-        }
+        }*/
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
-        imagen.eliminar(correrImagen);
+        /*imagen.eliminar(correrImagen);
         String mensaje=this.Titulo.getText();
         this.Picture.setText(mensaje+" ELIMINADA");
          System.out.println(imagen.getTamaño());
-         idImagen--;
+         idImagen--;*/
     }//GEN-LAST:event_jToggleButton2ActionPerformed
     
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       carpeta.insertarFinal(nombreCarpeta,imagen);
-       String nombre=this.nombreUsuario.getText();
+       usuario.insertarInicio(this.nombreUsuario.getText(), carpeta);
+        //carpeta.insertarFinal(nombreCarpeta/*,imagen*/);
+       /*String nombre=this.nombreUsuario.getText();
        int idArchivo=(int) this.jComboBox1.getSelectedIndex();
-       for(int a=0;a<carpeta.tamaño;a++){
-           if(carpeta.tamaño==a+1){
+       for(int a=0;a<carpeta.getTamaño();a++){
+           if(carpeta.getTamaño()==a+1){
                
            }else{
-               carpeta.eliminar(carpeta.tamaño);
+               carpeta.eliminar(carpeta.getTamaño());
            }
        }
        
@@ -382,7 +369,7 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         }
         idCarpeta=0;
         idImagen=0;
-        nombreCarpeta="GENERAL";
+        nombreCarpeta="GENERAL";*/
         new vPrincipal().setVisible(true);
         dispose();
         

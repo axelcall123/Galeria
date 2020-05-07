@@ -4,9 +4,9 @@ package fotos;
 import java.io.Serializable;
 
 public class dobleEnlaCir implements Serializable{
-    public NodoCir inicio;
-    public NodoCir fin;
-    int tamaño;
+    private NodoCir inicio;
+    private NodoCir fin;
+    private int tamaño;
     
     public dobleEnlaCir(){
         inicio=null;

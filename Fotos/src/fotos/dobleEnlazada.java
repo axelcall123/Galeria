@@ -5,18 +5,18 @@ import java.io.Serializable;
 
 public class dobleEnlazada implements Serializable{
     //private int tamaño;
-    public NodoDo inicio;
-    public NodoDo fin;
-    int tamaño;
+    private NodoDo inicio;
+    private NodoDo fin;
+    private int tamaño;
     
     public dobleEnlazada(){
         inicio=null;
         fin=null;
         tamaño=0;
     }
-    
-    public void insertarInicio(String nombre,Object nodo){
-        NodoDo nuevo= new NodoDo(nombre,nodo);
+       
+    public void insertarInicio(String nombre/*,Object nodo*/){
+        NodoDo nuevo= new NodoDo(nombre/*,nodo*/);
         if(inicio==null){
             inicio=nuevo;
             fin=nuevo;
@@ -28,8 +28,8 @@ public class dobleEnlazada implements Serializable{
         tamaño++;
     }
     
-    public void insertarFinal(String nombre,Object  nodo){
-        NodoDo nuevo= new NodoDo(nombre,nodo);
+    public void insertarFinal(String nombre/*,Object  nodo*/){
+        NodoDo nuevo= new NodoDo(nombre/*,nodo*/);
         if(inicio==null){
             fin=nuevo;
             inicio=nuevo;
@@ -74,12 +74,12 @@ public class dobleEnlazada implements Serializable{
         return tamaño;
     }
     
-    public Object obtenerNodo(int id){
+   public NodoDo obtenerNodo(int id){
         NodoDo temp=inicio;
         for(int z=0;z<id;z++){
             temp=temp.getSiguiente();//BUSCAR POR ID SOLO PARA ADELANTE
         }
-        return temp.getNodo();
+        return temp;
     }
     
     public String obtenerNombre(int id){
@@ -89,6 +89,14 @@ public class dobleEnlazada implements Serializable{
         }
         return temp.getNombre();
     }
+    /////
+    /*public NodoDo getCabeza(){
+        return inicio;
+    }
+    
+    public void setCabeza(NodoDo inicio){
+        this.inicio=inicio;
+    }*/
     
     public void ver(int id){
         System.out.println(" NODO: "+obtenerNodo(id)+" ;; NOMBRE STRING: "+obtenerNombre(id));

@@ -1,9 +1,9 @@
 package fotos;
 import java.io.Serializable;
 public class Enlazada implements Serializable{
-    public Nodo inicio;
-    public Nodo fin;
-    int tamaño;
+    private Nodo inicio;
+    private Nodo fin;
+    private int tamaño;
     
     public Enlazada(){
         inicio=null;
@@ -11,7 +11,7 @@ public class Enlazada implements Serializable{
         tamaño=0;
     }
     
-    public void insertarInicio(String nombre,Object dato){
+    public void insertarInicio(String nombre,dobleEnlazada dato){
         Nodo nuevo= new Nodo(nombre,dato);
         if(inicio==null){
             inicio=nuevo;

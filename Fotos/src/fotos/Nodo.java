@@ -4,38 +4,18 @@ import java.io.Serializable;
 
 public class Nodo implements Serializable{
     private String nombre;
-    public Object nodo;
+    private dobleEnlazada nodo;
     private Nodo siguiente;
     
-    static Nodo aCarp;
-    static dobleEnlaCir aImg;
-   /* private int nivel1;
-    private int nivel2;
-    private int nivel3;*/
-    
-
-    public Nodo(Object nod){//NODO USUARIOS
-        this.nodo=nod;//DATO OBJETO
+    public Nodo(String name){//NODO USUARIOS
+        this.nombre=name;//DATO OBJETO
         this.siguiente=null;//SIGUIENTE
     }
-    public Nodo(String name,Object nod){//NODO CARPETAS
+    public Nodo(String name,dobleEnlazada nod){//NODO CARPETAS
         this.nombre=name;//DATO OBJETO
         this.siguiente=null;//SIGUIENTE
         this.nodo=nod;
     }
-   /*public Nodo(String name,Object nod){//NODO CARPETAS
-        this.nombre=name;//DATO OBJETO
-        this.siguiente=null;//SIGUIENTE
-        this.nodo=nod;
-    }*/
-    /*public Nodo(Object dat,int uno,int dos){
-        this.dato=dat;//DATO OBJETO
-        this.siguiente=null;//SIGUIENTE
-        this.nivel1=uno;
-        this.nivel2=dos;
-        this.nivel3=tres;
-    }*/
-    
     
     public Nodo getSiguiente(){
         return siguiente;
@@ -51,10 +31,10 @@ public class Nodo implements Serializable{
         this.nombre = nombre;
     }
 
-    public Object getNodo() {
+    public dobleEnlazada getNodo() {
         return nodo;
     }
-    public void setNodo(Object nodo) {
+    public void setNodo(dobleEnlazada nodo) {
         this.nodo = nodo;
     }
     
