@@ -1,12 +1,21 @@
 package fotos;
 
 
-import javax.swing.JOptionPane;
+import java.io.Serializable;
 
-public class dobleEnlaCir extends dobleEnlazada {
+public class dobleEnlaCir implements Serializable{
+    public NodoCir inicio;
+    public NodoCir fin;
     int tamaño;
-     public void insertarInicio(Object img){
-        Nodo nuevo= new Nodo(img);
+    
+    public dobleEnlaCir(){
+        inicio=null;
+        fin=null;
+        tamaño=0;
+    }
+    
+    public void insertarInicio(Object img){
+        NodoCir nuevo= new NodoCir(img);
         if (inicio==null) {
             inicio = nuevo;
             fin = nuevo;  
@@ -18,8 +27,9 @@ public class dobleEnlaCir extends dobleEnlazada {
         }
         tamaño++;
     }
+     
     public void insertarFinal(Object img){
-        Nodo nuevo= new Nodo(img);
+        NodoCir nuevo= new NodoCir(img);
          if (inicio==null) {
             inicio = nuevo;
             fin = nuevo;
@@ -31,6 +41,7 @@ public class dobleEnlaCir extends dobleEnlazada {
         }
         tamaño++;
     }
+    
     public void eliminar(int id) {
         if (tamaño == 1) {
             fin.setSiguiente(null);
@@ -56,8 +67,8 @@ public class dobleEnlaCir extends dobleEnlazada {
                    tamaño--;
             }
         } else if (id != 0 && id != tamaño - 1) {
-            Nodo in = inicio;//funciona solo con 3 sin ser final e inicio
-            Nodo fn = fin;
+            NodoCir in = inicio;//funciona solo con 3 sin ser final e inicio
+            NodoCir fn = fin;
             for (int z = 0; z < id - 1; z++) {
                 in = in.getSiguiente();//OBTENER EL ANTERIOR DEL ID
             }
@@ -69,7 +80,7 @@ public class dobleEnlaCir extends dobleEnlazada {
             tamaño--;
         }else{
             if (id == tamaño - 1) {//ELMINA LA POS ULTIMA
-                 Nodo in = inicio;
+                 NodoCir in = inicio;
                   for (int z = 0; z < id - 1; z++) {
                       in = in.getSiguiente();
                   }
@@ -85,8 +96,20 @@ public class dobleEnlaCir extends dobleEnlazada {
             }
         }
     }
+    
     public int getTamaño(){
         return tamaño;
     }
      
+    public Object obtenerNodo(int id){
+        NodoCir temp=inicio;
+        for(int z=0;z<id;z++){
+            temp=temp.getSiguiente();//BUSCAR POR ID SOLO PARA ADELANTE
+        }
+        return temp.getNodo();
+    }
+    
+    public void ver(int id){
+        System.out.println(" NODO: "+obtenerNodo(id));
+    }
 }

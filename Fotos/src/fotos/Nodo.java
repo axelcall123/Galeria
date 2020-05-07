@@ -35,7 +35,7 @@ public class Nodo implements Serializable{
         this.nivel2=dos;
         this.nivel3=tres;
     }*/
-
+    
     
     public Nodo getSiguiente(){
         return siguiente;
