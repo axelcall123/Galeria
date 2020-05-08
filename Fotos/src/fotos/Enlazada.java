@@ -11,8 +11,8 @@ public class Enlazada implements Serializable{
         tamaño=0;
     }
     
-    public void insertarInicio(String nombre,dobleEnlazada dato){
-        Nodo nuevo= new Nodo(nombre,dato);
+    public void insertarInicio(String nombre/*,dobleEnlazada dato*/){
+        Nodo nuevo= new Nodo(nombre/*,dato*/);
         if(inicio==null){
             inicio=nuevo;
         }else{
@@ -26,12 +26,12 @@ public class Enlazada implements Serializable{
         return tamaño;
     }
     
-    public Object obtenerNodo(int id){
+    public Nodo obtenerNodo(int id){
         Nodo temp=inicio;
         for(int z=0;z<id;z++){
             temp=temp.getSiguiente();//BUSCAR POR ID SOLO PARA ADELANTE
         }
-        return temp.getNodo();
+        return temp;
     }
     
     public String obtenerNombre(int id){

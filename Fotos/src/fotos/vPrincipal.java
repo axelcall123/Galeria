@@ -22,7 +22,7 @@ public class vPrincipal extends javax.swing.JFrame {
         } else {
             ayudaUsuario=leer;
             for (int a = 0; a < ayudaUsuario.getTamaño(); a++) {
-                usuario.insertarInicio(ayudaUsuario.obtenerNombre(a), (dobleEnlazada) ayudaUsuario.obtenerNodo(a));
+                usuario.insertarInicio(ayudaUsuario.obtenerNombre(a));
                 //System.out.println(ayudaUsuario.obtenerNombre(a) + " ;; " + ayudaUsuario.obtenerNodo(a));
             }
             System.out.println();
@@ -72,6 +72,11 @@ public class vPrincipal extends javax.swing.JFrame {
         jLabel2.setText("MENU");
 
         jToggleButton1.setText("INGRESAR A CONVERTIRDOR");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
 
         jToggleButton2.setText("INGRESAR A EDITOR");
         jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -171,6 +176,11 @@ public class vPrincipal extends javax.swing.JFrame {
         new ver().setVisible(true);
         dispose();
     }//GEN-LAST:event_ingBiblio1ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        new Convertidor().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

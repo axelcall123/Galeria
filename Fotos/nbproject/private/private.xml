@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="4">
         <file>
-            <url>src/fotos/dobleEnlazada.java</url>
-            <bookmark id="2">
+            <url>src/fotos/Nodo.java</url>
+            <bookmark id="4">
                 <name/>
-                <line>33</line>
+                <line>6</line>
                 <key/>
             </bookmark>
         </file>
         <file>
-            <url>src/fotos/dobleEnlaCir.java</url>
-            <bookmark id="1">
+            <url>src/fotos/dobleEnlazada.java</url>
+            <bookmark id="2">
                 <name/>
-                <line>33</line>
+                <line>45</line>
                 <key/>
             </bookmark>
         </file>
@@ -25,12 +25,20 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>src/fotos/dobleEnlaCir.java</url>
+            <bookmark id="1">
+                <name/>
+                <line>44</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/JPEGImageHandlerColors.java</file>
-            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/editor.java</file>
-            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/Guardar.java</file>
+            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/vPrincipal.java</file>
+            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/Convertidor.java</file>
+            <file>file:/D:/ALEX/U/REPOSITORIOS%20GITHUB/Galeria/Fotos/src/fotos/ingresarBiblioteca.java</file>
         </group>
     </open-files>
 </project-private>

@@ -9,8 +9,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ingresarBiblioteca extends javax.swing.JFrame {
     JTemp temp = new JTemp();
     static Enlazada usuario= new Enlazada();
-    public dobleEnlazada carpeta=new dobleEnlazada();
-    public dobleEnlaCir imagen=new dobleEnlaCir();
     static BinManager bin = new BinManager();//ENLAZADA SIMPLE
     
    //static int idCarpeta;
@@ -19,7 +17,8 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         initComponents();
         this.nombreUsuario.setText(usuariosID[0].getNombre());
         this.Picture.setFont(new java.awt.Font("Dialog", java.awt.Font.PLAIN,10));
-        carpeta.insertarFinal("GENERAL");
+        usuario.insertarInicio(this.nombreUsuario.getText()/*, carpeta*/);
+        usuario.obtenerNodo(0).getArchivo().insertarFinal("GENERAL");//carpeta.insertarFinal("GENERAL");
     }
     
     @SuppressWarnings("unchecked")
@@ -229,11 +228,10 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         Picture.setIcon(new ImageIcon(url)); 
         this.Titulo.setText(nombre);//TITULO DE LA IMAGEN
         //GUARDAR
-        //imagen.insertarFinal(archivo);
         String categoria= (String) this.jComboBox1.getSelectedItem();
-        for(int z=0;z<carpeta.getTamaño();z++){
-            if(categoria==carpeta.obtenerNombre(z)){
-                carpeta.obtenerNodo(z).getImagen().insertarInicio(archivo);
+        for(int z=0;z<usuario.obtenerNodo(0).getArchivo().getTamaño()/*carpeta.getTamaño()*/;z++){     
+            if(categoria==usuario.obtenerNodo(0).getArchivo().obtenerNombre(z)/*carpeta.obtenerNombre(z)*/){
+                usuario.obtenerNodo(0).getArchivo().obtenerNodo(z).getImagen().insertarInicio(archivo);//carpeta.obtenerNodo(z).getImagen().insertarInicio(archivo);
             }
         }
         
@@ -306,7 +304,7 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
     static String nombreCarpeta;
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         nombreCarpeta = JOptionPane.showInputDialog("NOMBRE SU CARPETA");
-        carpeta.insertarFinal(nombreCarpeta/*,imagen*/);
+        usuario.obtenerNodo(0).getArchivo().insertarFinal(nombreCarpeta);//carpeta.insertarFinal(nombreCarpeta/*,imagen*/);
         //carpeta.getCabeza().getImagen().insertarInicio(evt);
         jComboBox1.addItem(nombreCarpeta);
         idImagen=0;
@@ -315,21 +313,15 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
        System.out.println();
-        for(int a=0;a<usuario.getTamaño();a++){
-           System.out.println("USUARIOS: "); usuario.ver(a);
-        }
-        System.out.println();
-        for(int a=0;a<carpeta.getTamaño();a++){
-            System.out.println("CARPETAS"); carpeta.ver(a);
-            System.out.println("IMAGENES: ");
-            for(int b=0;b<carpeta.obtenerNodo(a).getImagen().getTamaño();b++){
-                 System.out.println("   :"); carpeta.obtenerNodo(a).getImagen().ver(b);
-            }    
-        }
-        System.out.println();
-        /*for(int a=0;a<imagen.getTamaño();a++){
-           System.out.println("IMAGEN: "+a); imagen.ver(a);
-        }*/
+       for(int z=0;z<usuario.getTamaño();z++){
+            System.out.println("NOMBRE: "+usuario.obtenerNombre(z));
+            for(int y=0;y<usuario.obtenerNodo(z).getArchivo().getTamaño();y++){
+                System.out.println("    ARCHIVO: "+usuario.obtenerNodo(z).getArchivo().obtenerNombre(y));
+                for(int x=0;x<usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().getTamaño();x++){
+                    System.out.println("        IMAGEN:"+usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x));
+                }
+            }
+        } 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
@@ -342,34 +334,12 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
     
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       usuario.insertarInicio(this.nombreUsuario.getText(), carpeta);
-        //carpeta.insertarFinal(nombreCarpeta/*,imagen*/);
-       /*String nombre=this.nombreUsuario.getText();
-       int idArchivo=(int) this.jComboBox1.getSelectedIndex();
-       for(int a=0;a<carpeta.getTamaño();a++){
-           if(carpeta.getTamaño()==a+1){
-               
-           }else{
-               carpeta.eliminar(carpeta.getTamaño());
-           }
-       }
-       
-       usuario.insertarInicio(nombre, carpeta);
-       bin.writeObject(usuario);
-       for(int a=0;a<idImagen;a++){
-            if(imagen.getTamaño()==1){
-                imagen.eliminar(0);
-            }else{
-                imagen.eliminar(1);
-            }
-            System.out.println(imagen.getTamaño());
-        }
-        while(carpeta.getTamaño()!=0){
+
+       //bin.writeObject(usuario);
+        /*while(carpeta.getTamaño()!=0){
             carpeta.eliminar(0);
-        }
-        idCarpeta=0;
+        }*/
         idImagen=0;
-        nombreCarpeta="GENERAL";*/
         new vPrincipal().setVisible(true);
         dispose();
         
