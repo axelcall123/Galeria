@@ -161,26 +161,12 @@ public class editor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
+        opcionesConvertir generador= new opcionesConvertir();
         if(archivo==null){
             JOptionPane.showMessageDialog(null, "INGRESE UNA IMAGEN");
         }else{  
             if(this.jU.isSelected()==true){//PRIMER BOTON
-                String nombre=archivo.getName();//OBTENER EL NOMBRE
-                String extension=nombre.substring(nombre.lastIndexOf(".")+1);//VER SU EXTENSION
-                if(extension.toUpperCase().equals("JPG")){//CONVIERTE UNA IMAGEN JPG A BMP                   
-                    JPEGtoBMPImage bmp= new JPEGtoBMPImage(archivo.getPath().toString());
-                    try {
-                        bmp.readFile();
-                        bmp.generateFiles();
-                    } catch (Exception ex) {Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);}
-                }else if(extension.toUpperCase().equals("BMP")){//CONVIETRE UNA IMAGEN BMP A JPG
-                    BMPtoJPEGImage jpg= new BMPtoJPEGImage(archivo.getPath().toString());
-                    try {
-                        jpg.readFile();
-                        jpg.generateFiles();
-                    } catch (Exception ex) {Logger.getLogger(editor.class.getName()).log(Level.SEVERE, null, ex);}
-                }
+                
                 
                 
             }else if(this.jD.isSelected()==true){//SEGUNDO BOTON

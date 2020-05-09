@@ -1,6 +1,7 @@
 package fotos;
 
 import static fotos.ingresarBiblioteca.usuario;
+import java.io.File;
 
 public class Convertidor extends javax.swing.JFrame {
    
@@ -32,6 +33,7 @@ public class Convertidor extends javax.swing.JFrame {
         ingBiblio4 = new javax.swing.JButton();
         ingBiblio5 = new javax.swing.JButton();
         ingBiblio6 = new javax.swing.JButton();
+        textArea1 = new java.awt.TextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -103,7 +105,7 @@ public class Convertidor extends javax.swing.JFrame {
             }
         });
 
-        ingBiblio5.setText("VER USUARIOS");
+        ingBiblio5.setText("VER CARPETAS");
         ingBiblio5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ingBiblio5ActionPerformed(evt);
@@ -116,6 +118,8 @@ public class Convertidor extends javax.swing.JFrame {
                 ingBiblio6ActionPerformed(evt);
             }
         });
+
+        textArea1.setEditable(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -136,49 +140,59 @@ public class Convertidor extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ingBiblio5))
                 .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ingBiblio5)
-                    .addComponent(ingBiblio4)
-                    .addComponent(ingBiblio2)
-                    .addComponent(ingBiblio6, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ingBiblio3, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(378, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ingBiblio6)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(ingBiblio4)
+                        .addComponent(ingBiblio2)
+                        .addComponent(ingBiblio3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addGap(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ingBiblio6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jU)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jD)
-                        .addGap(10, 10, 10)
-                        .addComponent(jT)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jC))
+                        .addGap(0, 262, Short.MAX_VALUE)
+                        .addComponent(ingBiblio5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(ingBiblio3)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(nombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ingBiblio6))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ingBiblio2)
-                        .addGap(6, 6, 6)
-                        .addComponent(ingBiblio4)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCin)
-                    .addComponent(ingBiblio5))
-                .addContainerGap(32, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(nombreUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jU)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jD)
+                                .addGap(10, 10, 10)
+                                .addComponent(jT)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jC)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCin))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(ingBiblio3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ingBiblio2)
+                                .addGap(6, 6, 6)
+                                .addComponent(ingBiblio4)
+                                .addContainerGap())))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -216,15 +230,25 @@ public class Convertidor extends javax.swing.JFrame {
     }//GEN-LAST:event_jCActionPerformed
 
     private void ingBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio2ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_ingBiblio2ActionPerformed
 
     private void ingBiblio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio3ActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_ingBiblio3ActionPerformed
 
     private void ingBiblio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio4ActionPerformed
-        // TODO add your handling code here:
+        if(this.jU.isSelected()==true){
+            
+        }else if(this.jD.isSelected()==true){
+        
+        }else if(this.jT.isSelected()==true){
+        
+        }else if(this.jC.isSelected()==true){
+        
+        }else if(this.jCin.isSelected()==true){
+            
+        }
     }//GEN-LAST:event_ingBiblio4ActionPerformed
 
     private void ingBiblio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio5ActionPerformed
@@ -242,15 +266,37 @@ public class Convertidor extends javax.swing.JFrame {
             String nombreUsuario=(String) this.jUsuario.getSelectedItem();
             if(nombreUsuario==usuario.obtenerNombre(z)){
                 for(int y=0;y<usuario.obtenerNodo(z).getArchivo().getTamaño();y++){
-                    this.jCarpeta.addItem(usuario.obtenerNodo(z).getArchivo().obtenerNombre(z));
+                    this.jCarpeta.addItem(usuario.obtenerNodo(z).getArchivo().obtenerNombre(y));
                 }
             }
         }
         
     }//GEN-LAST:event_ingBiblio5ActionPerformed
-
+    
+    dobleEnlaCir imagenes= new dobleEnlaCir();
     private void ingBiblio6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio6ActionPerformed
-        // TODO add your handling code here:
+        String area="";
+        File help;
+        String nombreUsuario=(String) this.jUsuario.getSelectedItem();
+        String nombreArchivo=(String) this.jCarpeta.getSelectedItem();
+        for(int z=0;z<usuario.getTamaño();z++){
+            if(nombreUsuario==usuario.obtenerNombre(z)){
+                for(int y=0;y<usuario.obtenerNodo(z).getArchivo().getTamaño();y++){  
+                    if(nombreArchivo==usuario.obtenerNodo(z).getArchivo().obtenerNombre(y)){
+                        for(int x=0;x<usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().getTamaño();x++){
+                            area=area+usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x)+'\n';
+                            help =(File) usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x);
+                            imagenes.insertarInicio(help.getPath());
+                        }  
+                    }else{
+                        continue;
+                    }
+                }
+            }else{
+                continue;
+            }
+        }
+        this.textArea1.append(area);
     }//GEN-LAST:event_ingBiblio6ActionPerformed
 
     public static void main(String args[]) {
@@ -278,5 +324,6 @@ public class Convertidor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jUsuario;
     private javax.swing.JLabel nombreUsuario;
     private javax.swing.JLabel nombreUsuario1;
+    private java.awt.TextArea textArea1;
     // End of variables declaration//GEN-END:variables
 }
