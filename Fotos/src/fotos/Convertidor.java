@@ -34,6 +34,7 @@ public class Convertidor extends javax.swing.JFrame {
         ingBiblio5 = new javax.swing.JButton();
         ingBiblio6 = new javax.swing.JButton();
         textArea1 = new java.awt.TextArea();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,6 +122,13 @@ public class Convertidor extends javax.swing.JFrame {
 
         textArea1.setEditable(false);
 
+        jButton6.setText("exit");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -142,13 +150,18 @@ public class Convertidor extends javax.swing.JFrame {
                             .addComponent(jUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(ingBiblio5))
-                .addGap(39, 39, 39)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ingBiblio6)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(ingBiblio4)
-                        .addComponent(ingBiblio2)
-                        .addComponent(ingBiblio3, javax.swing.GroupLayout.Alignment.TRAILING)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ingBiblio6)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(ingBiblio4)
+                                .addComponent(ingBiblio2)
+                                .addComponent(ingBiblio3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jButton6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addGap(42, 42, 42))
@@ -159,7 +172,7 @@ public class Convertidor extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 262, Short.MAX_VALUE)
+                        .addGap(0, 270, Short.MAX_VALUE)
                         .addComponent(ingBiblio5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -188,7 +201,10 @@ public class Convertidor extends javax.swing.JFrame {
                                 .addComponent(ingBiblio2)
                                 .addGap(6, 6, 6)
                                 .addComponent(ingBiblio4)
-                                .addContainerGap())))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6)
+                        .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -208,7 +224,8 @@ public class Convertidor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    opcionesConvertir generador= new opcionesConvertir();
+    dobleEnlaCir imagenes= new dobleEnlaCir();
     private void jCarpetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCarpetaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jCarpetaActionPerformed
@@ -238,16 +255,35 @@ public class Convertidor extends javax.swing.JFrame {
     }//GEN-LAST:event_ingBiblio3ActionPerformed
 
     private void ingBiblio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio4ActionPerformed
-        if(this.jU.isSelected()==true){
-            
-        }else if(this.jD.isSelected()==true){
-        
-        }else if(this.jT.isSelected()==true){
-        
-        }else if(this.jC.isSelected()==true){
-        
-        }else if(this.jCin.isSelected()==true){
-            
+        this.textArea1.setText("Procesando..."+"\n");
+        String area="";
+        File archivos;
+        for(int a=0;a<imagenes.getTamaño();a++){    //CICLO PARA TODAS LA IMAGNES
+            System.out.println(imagenes.obtenerNodo(a));
+            archivos=(File) imagenes.obtenerNodo(a);
+            //area=archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+            System.out.println(area);
+            if(this.jU.isSelected()==true){
+                generador.jpgToBmp(archivos);
+                area="JPG A BMP O VICERVERSA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+                this.textArea1.append(area);
+            }else if(this.jD.isSelected()==true){
+                generador.copia(archivos);
+                area="COPIA JPG: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+                this.textArea1.append(area);
+            }else if(this.jT.isSelected()==true){
+                generador.redGreenBlue(archivos);
+                area="ROJO VERDE AZUL SEPIA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+                this.textArea1.append(area);
+            }else if(this.jC.isSelected()==true){
+                generador.modificarImagen(archivos);
+                area="ROTAR: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+                this.textArea1.append(area);
+            }else if(this.jCin.isSelected()==true){
+                generador.blancoNegro(archivos);
+                area="BLANCO NEGRO: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+                this.textArea1.append(area);
+            }
         }
     }//GEN-LAST:event_ingBiblio4ActionPerformed
 
@@ -262,6 +298,7 @@ public class Convertidor extends javax.swing.JFrame {
             }
         }
         //////////////
+        this.jCarpeta.removeAllItems();
         for(int z=0;z<usuario.getTamaño();z++){
             String nombreUsuario=(String) this.jUsuario.getSelectedItem();
             if(nombreUsuario==usuario.obtenerNombre(z)){
@@ -273,7 +310,7 @@ public class Convertidor extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ingBiblio5ActionPerformed
     
-    dobleEnlaCir imagenes= new dobleEnlaCir();
+    
     private void ingBiblio6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio6ActionPerformed
         String area="";
         File help;
@@ -286,7 +323,7 @@ public class Convertidor extends javax.swing.JFrame {
                         for(int x=0;x<usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().getTamaño();x++){
                             area=area+usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x)+'\n';
                             help =(File) usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x);
-                            imagenes.insertarInicio(help.getPath());
+                            imagenes.insertarFinal(help);
                         }  
                     }else{
                         continue;
@@ -298,6 +335,13 @@ public class Convertidor extends javax.swing.JFrame {
         }
         this.textArea1.append(area);
     }//GEN-LAST:event_ingBiblio6ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+
+        new vPrincipal().setVisible(true);
+        dispose();
+
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     public static void main(String args[]) {
 
@@ -314,6 +358,7 @@ public class Convertidor extends javax.swing.JFrame {
     private javax.swing.JButton ingBiblio4;
     private javax.swing.JButton ingBiblio5;
     private javax.swing.JButton ingBiblio6;
+    private javax.swing.JButton jButton6;
     private javax.swing.JRadioButton jC;
     private javax.swing.JComboBox<String> jCarpeta;
     private javax.swing.JRadioButton jCin;

@@ -30,7 +30,7 @@ public class JPEGImageHandlerBN extends ImageHandler {
              File outputfile;
              boolean result;
              
-             //COLOR ROJO
+             //CONVIERTE BLANCO Y NEGRO
             for(int a=0;a<imagenActual.getWidth();a++){
                 for(int b=0;b<imagenActual.getHeight();b++){
                     colorOriginal=new Color(this.imagenActual.getRGB(a, b));
@@ -45,12 +45,12 @@ public class JPEGImageHandlerBN extends ImageHandler {
                     imagenActual.setRGB(a, b,colorSRGB);    
                 }
              }
-             obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);
-             nuevaUrl="TEMP\\JPG\\"+"blancoNegro-"+obtenerNombre;
-             JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
+             obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);//NOMBRE
+             nuevaUrl="TEMP\\JPG\\"+"blancoNegro-"+obtenerNombre;//NUEVA URL
+             JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";//CONVIETRE BMP A JPG
              nuevaUrl="TEMP\\JPG\\"+JPG;
              outputfile = new File(nuevaUrl);
-             result=ImageIO.write(imagenActual, "jpg", outputfile);
+             result=ImageIO.write(imagenActual, "jpg", outputfile);//REGRESA UNA JPG
              
             
 	}        
