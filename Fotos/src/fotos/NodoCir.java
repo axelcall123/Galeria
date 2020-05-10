@@ -15,11 +15,11 @@ public class NodoCir implements Serializable{
         this.nodo=nod;//DATO OBJETO
         this.siguiente=null;//SIGUIENTE
     }
-    public NodoCir(String name,Object nod){//NODO CARPETAS
+    /*public NodoCir(String name,Object nod){//NODO CARPETAS
         this.nombre=name;//DATO OBJETO
         this.siguiente=null;//SIGUIENTE
         this.nodo=nod;
-    }
+    }*/
 
     
     public NodoCir getSiguiente(){

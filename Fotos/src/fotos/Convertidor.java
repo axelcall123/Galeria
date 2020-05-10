@@ -2,6 +2,7 @@ package fotos;
 
 import static fotos.ingresarBiblioteca.usuario;
 import java.io.File;
+import javax.swing.JOptionPane;
 
 public class Convertidor extends javax.swing.JFrame {
    
@@ -33,7 +34,7 @@ public class Convertidor extends javax.swing.JFrame {
         ingBiblio4 = new javax.swing.JButton();
         ingBiblio5 = new javax.swing.JButton();
         ingBiblio6 = new javax.swing.JButton();
-        textArea1 = new java.awt.TextArea();
+        areaProcesamiento = new java.awt.TextArea();
         jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,7 +121,7 @@ public class Convertidor extends javax.swing.JFrame {
             }
         });
 
-        textArea1.setEditable(false);
+        areaProcesamiento.setEditable(false);
 
         jButton6.setText("exit");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
@@ -163,7 +164,7 @@ public class Convertidor extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addComponent(jButton6)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                .addComponent(areaProcesamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                 .addGap(42, 42, 42))
         );
         jPanel1Layout.setVerticalGroup(
@@ -202,12 +203,11 @@ public class Convertidor extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(ingBiblio4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                        .addGap(18, 18, 18)
                         .addComponent(jButton6)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(textArea1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(areaProcesamiento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -247,15 +247,65 @@ public class Convertidor extends javax.swing.JFrame {
     }//GEN-LAST:event_jCActionPerformed
 
     private void ingBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio2ActionPerformed
-        
+        this.areaProcesamiento.setText("Procesando..."+"\n");
+        String area="";
+        File archivos;
+        for(int a=imagenes.getTamaño()-1;a>=0;a--){    //CICLO PARA TODAS LA IMAGNES
+            System.out.println(imagenes.obtenerNodo(a));
+            archivos=(File) imagenes.obtenerNodo(a);
+            //area=archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
+            System.out.println(area);
+            if(this.jU.isSelected()==true){
+                generador.jpgToBmp(archivos);
+                area="JPG A BMP O VICERVERSA: "+archivos.getName()+'\n';//QUITA TODO DEJA SOLO EL NOMBRE
+                this.areaProcesamiento.append(area);//LO AGRAGA 
+            }else if(this.jD.isSelected()==true){
+                generador.copia(archivos);
+                area="COPIA JPG: "+archivos.getName()+'\n';
+                this.areaProcesamiento.append(area);
+            }else if(this.jT.isSelected()==true){
+                generador.redGreenBlue(archivos);
+                area="ROJO VERDE AZUL SEPIA: "+archivos.getName()+'\n';
+                this.areaProcesamiento.append(area);
+            }else if(this.jC.isSelected()==true){
+                generador.modificarImagen(archivos);
+                area="ROTAR: "+archivos.getName()+'\n';
+                this.areaProcesamiento.append(area);
+            }else if(this.jCin.isSelected()==true){
+                generador.blancoNegro(archivos);
+                area="BLANCO NEGRO: "+archivos.getName()+'\n';
+                this.areaProcesamiento.append(area);
+            }else{
+                JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
+            }
+        }
     }//GEN-LAST:event_ingBiblio2ActionPerformed
 
     private void ingBiblio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio3ActionPerformed
-      
+        this.areaProcesamiento.setText("Procesando..."+"\n");
+        if(this.jU.isSelected()==true){
+           
+        }
+        else if(this.jD.isSelected()==true){
+           
+        }
+        else if(this.jT.isSelected()==true){
+            procesoMulti dos= new procesoMulti(imagenes);
+            dos.nel();
+        }
+        else if(this.jC.isSelected()==true){
+          
+        }
+        else if(this.jCin.isSelected()==true){
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
+        }
     }//GEN-LAST:event_ingBiblio3ActionPerformed
 
     private void ingBiblio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio4ActionPerformed
-        this.textArea1.setText("Procesando..."+"\n");
+        this.areaProcesamiento.setText("Procesando..."+"\n");
         String area="";
         File archivos;
         for(int a=0;a<imagenes.getTamaño();a++){    //CICLO PARA TODAS LA IMAGNES
@@ -266,23 +316,25 @@ public class Convertidor extends javax.swing.JFrame {
             if(this.jU.isSelected()==true){
                 generador.jpgToBmp(archivos);
                 area="JPG A BMP O VICERVERSA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.textArea1.append(area);
+                this.areaProcesamiento.append(area);
             }else if(this.jD.isSelected()==true){
                 generador.copia(archivos);
                 area="COPIA JPG: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.textArea1.append(area);
+                this.areaProcesamiento.append(area);
             }else if(this.jT.isSelected()==true){
                 generador.redGreenBlue(archivos);
                 area="ROJO VERDE AZUL SEPIA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.textArea1.append(area);
+                this.areaProcesamiento.append(area);
             }else if(this.jC.isSelected()==true){
                 generador.modificarImagen(archivos);
                 area="ROTAR: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.textArea1.append(area);
+                this.areaProcesamiento.append(area);
             }else if(this.jCin.isSelected()==true){
                 generador.blancoNegro(archivos);
                 area="BLANCO NEGRO: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.textArea1.append(area);
+                this.areaProcesamiento.append(area);
+            }else{
+                JOptionPane.showMessageDialog(null, "NO ELEIGIO UNA OPCION");
             }
         }
     }//GEN-LAST:event_ingBiblio4ActionPerformed
@@ -313,6 +365,7 @@ public class Convertidor extends javax.swing.JFrame {
     
     private void ingBiblio6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio6ActionPerformed
         String area="";
+        this.areaProcesamiento.setText("COLA: "+'\n');
         File help;
         String nombreUsuario=(String) this.jUsuario.getSelectedItem();
         String nombreArchivo=(String) this.jCarpeta.getSelectedItem();
@@ -321,7 +374,6 @@ public class Convertidor extends javax.swing.JFrame {
                 for(int y=0;y<usuario.obtenerNodo(z).getArchivo().getTamaño();y++){  
                     if(nombreArchivo==usuario.obtenerNodo(z).getArchivo().obtenerNombre(y)){
                         for(int x=0;x<usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().getTamaño();x++){
-                            area=area+usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x)+'\n';
                             help =(File) usuario.obtenerNodo(z).getArchivo().obtenerNodo(y).getImagen().obtenerNodo(x);
                             imagenes.insertarFinal(help);
                         }  
@@ -333,7 +385,10 @@ public class Convertidor extends javax.swing.JFrame {
                 continue;
             }
         }
-        this.textArea1.append(area);
+        for(int a=0;a<imagenes.getTamaño();a++){
+            area=area+imagenes.obtenerNodo(a)+'\n';
+        }
+        this.areaProcesamiento.append(area);
     }//GEN-LAST:event_ingBiblio6ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -353,6 +408,7 @@ public class Convertidor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public java.awt.TextArea areaProcesamiento;
     private javax.swing.JButton ingBiblio2;
     private javax.swing.JButton ingBiblio3;
     private javax.swing.JButton ingBiblio4;
@@ -369,6 +425,5 @@ public class Convertidor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jUsuario;
     private javax.swing.JLabel nombreUsuario;
     private javax.swing.JLabel nombreUsuario1;
-    private java.awt.TextArea textArea1;
     // End of variables declaration//GEN-END:variables
 }

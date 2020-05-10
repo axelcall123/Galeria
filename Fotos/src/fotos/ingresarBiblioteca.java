@@ -5,6 +5,7 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -209,7 +210,7 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
     static int idImagen;
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         //PARA IMAGENES
-        Guardar ventana = new Guardar();
+        /*Guardar ventana = new Guardar();
         FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
         ventana.Cargar.setFileFilter(filtro);//FILTRO DE IMAGENES
         int resulta = ventana.Cargar.showOpenDialog(null);//DEVULVE UN ENTERO
@@ -225,19 +226,52 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         this.Titulo.setText(nombre);//TITULO DE LA IMAGEN
         //GUARDAR
         String categoria= (String) this.jComboBox1.getSelectedItem();
-        for(int z=0;z<usuario.obtenerNodo(0).getArchivo().getTamaño()/*carpeta.getTamaño()*/;z++){     
-            if(categoria==usuario.obtenerNodo(0).getArchivo().obtenerNombre(z)/*carpeta.obtenerNombre(z)*/){
+        for(int z=0;z<usuario.obtenerNodo(0).getArchivo().getTamaño();z++){     
+            if(categoria==usuario.obtenerNodo(0).getArchivo().obtenerNombre(z)){
                 usuario.obtenerNodo(0).getArchivo().obtenerNodo(z).getImagen().insertarInicio(archivo);//carpeta.obtenerNodo(z).getImagen().insertarInicio(archivo);
             }
         }
-        
         //492,358
         ImageIcon icon = new ImageIcon(url);
         Icon iconos = new ImageIcon(icon.getImage().getScaledInstance(Picture.getWidth(), Picture.getHeight(), Image.SCALE_DEFAULT));///AJUSTA EL TAMAÑO DE LA IMAGEN
         this.Picture.setIcon(iconos);
        // System.out.println("ID: "+idCarpeta);
         correrImagen++;
-        idImagen++;
+        idImagen++;*/
+        
+        Guardar ventana = new Guardar();
+        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG y PNG", "jpg", "png");
+        ventana.Cargar.setFileFilter(filtro);//FILTRO DE IMAGENES
+        int resulta = ventana.Cargar.showOpenDialog(null);//DEVULVE UN ENTERO
+        
+        File[] archivos = ventana.Cargar.getSelectedFiles();
+        for(int i=0;i<archivos.length;i++){
+            //URLS
+            archivo=archivos[i];
+            String url = archivo.getPath();//URL
+            //String nuevaUrl=url.substring(url.lastIndexOf("D:")+0,+url.lastIndexOf(".jpg"))+".bmp";
+            String nuevaUrl="DES\\"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".jpg";//DA LO MISM JPG O BMP
+            String nombre = archivo.getName();//NOMBRE
+            System.out.println(url+" ;; "+nuevaUrl);
+            //OBTENER IMAGEN
+            Picture.setIcon(new ImageIcon(url));
+            this.Titulo.setText(nombre);//TITULO DE LA IMAGEN
+            //GUARDAR
+            
+            String categoria= (String) this.jComboBox1.getSelectedItem();
+            for(int z=0;z<usuario.obtenerNodo(0).getArchivo().getTamaño();z++){     
+                if(categoria==usuario.obtenerNodo(0).getArchivo().obtenerNombre(z)){
+                    usuario.obtenerNodo(0).getArchivo().obtenerNodo(z).getImagen().insertarInicio(archivo);//carpeta.obtenerNodo(z).getImagen().insertarInicio(archivo);
+                }
+            }
+            //492,358
+            ImageIcon icon = new ImageIcon(url);
+            Icon iconos = new ImageIcon(icon.getImage().getScaledInstance(Picture.getWidth(), Picture.getHeight(), Image.SCALE_DEFAULT));///AJUSTA EL TAMAÑO DE LA IMAGEN
+            this.Picture.setIcon(iconos);
+           // System.out.println("ID: "+idCarpeta);
+            correrImagen++;
+            idImagen++;
+        }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
     
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
