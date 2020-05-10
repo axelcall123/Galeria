@@ -1,15 +1,15 @@
 package fotos;
 
+import Hilos.porcentajeFifo;
+import Hilos.porcentajeLifo;
 import fotos.Apoyo.opcionesConvertir;
-import fotos.Apoyo.procesoMulti;
+import Hilos.procesoMulti;
 import fotos.Listas.dobleEnlaCir;
 import static fotos.ingresarBiblioteca.usuario;
 import java.io.File;
 import javax.swing.JOptionPane;
 
-public class Convertidor extends javax.swing.JFrame {
-   
-    
+public class Convertidor extends javax.swing.JFrame {    
     public Convertidor() {
         initComponents();
         for(int z=0;z<usuario.getTamaño();z++){
@@ -27,11 +27,11 @@ public class Convertidor extends javax.swing.JFrame {
         nombreUsuario = new javax.swing.JLabel();
         jCarpeta = new javax.swing.JComboBox<>();
         nombreUsuario1 = new javax.swing.JLabel();
-        jU = new javax.swing.JRadioButton();
-        jD = new javax.swing.JRadioButton();
-        jT = new javax.swing.JRadioButton();
-        jC = new javax.swing.JRadioButton();
-        jCin = new javax.swing.JRadioButton();
+        jU_d = new javax.swing.JRadioButton();
+        jD_d = new javax.swing.JRadioButton();
+        jT_d = new javax.swing.JRadioButton();
+        jC_d = new javax.swing.JRadioButton();
+        jCin_d = new javax.swing.JRadioButton();
         ingBiblio2 = new javax.swing.JButton();
         ingBiblio3 = new javax.swing.JButton();
         ingBiblio4 = new javax.swing.JButton();
@@ -65,30 +65,30 @@ public class Convertidor extends javax.swing.JFrame {
         nombreUsuario1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         nombreUsuario1.setText("CARPETAS");
 
-        jU.setText("JPEG a BMP y Viceversa");
-        jU.addActionListener(new java.awt.event.ActionListener() {
+        jU_d.setText("JPEG a BMP y Viceversa");
+        jU_d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jUActionPerformed(evt);
+                jU_dActionPerformed(evt);
             }
         });
 
-        jD.setText("copia JPEG");
+        jD_d.setText("copia JPEG");
 
-        jT.setText("Rojo Verde Azul Sepia");
-        jT.addActionListener(new java.awt.event.ActionListener() {
+        jT_d.setText("Rojo Verde Azul Sepia");
+        jT_d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTActionPerformed(evt);
+                jT_dActionPerformed(evt);
             }
         });
 
-        jC.setText("Modifica imagen");
-        jC.addActionListener(new java.awt.event.ActionListener() {
+        jC_d.setText("Modifica imagen");
+        jC_d.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCActionPerformed(evt);
+                jC_dActionPerformed(evt);
             }
         });
 
-        jCin.setText("Blacno y negro");
+        jCin_d.setText("Blacno y negro");
 
         ingBiblio2.setText("EJECTUAR EN SECUENCIAL LIFO");
         ingBiblio2.addActionListener(new java.awt.event.ActionListener() {
@@ -147,11 +147,11 @@ public class Convertidor extends javax.swing.JFrame {
                         .addGap(32, 32, 32)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jC)
-                                .addComponent(jU)
-                                .addComponent(jD)
-                                .addComponent(jT)
-                                .addComponent(jCin)
+                                .addComponent(jC_d)
+                                .addComponent(jU_d)
+                                .addComponent(jD_d)
+                                .addComponent(jT_d)
+                                .addComponent(jCin_d)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(nombreUsuario1)
@@ -196,15 +196,15 @@ public class Convertidor extends javax.swing.JFrame {
                                     .addComponent(nombreUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jCarpeta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jU)
+                                .addComponent(jU_d)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jD)
+                                .addComponent(jD_d)
                                 .addGap(10, 10, 10)
-                                .addComponent(jT)
+                                .addComponent(jT_d)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jC)
+                                .addComponent(jC_d)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jCin))
+                                .addComponent(jCin_d))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(ingBiblio3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -246,113 +246,50 @@ public class Convertidor extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jUsuarioActionPerformed
 
-    private void jUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUActionPerformed
+    private void jU_dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jU_dActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jUActionPerformed
+    }//GEN-LAST:event_jU_dActionPerformed
 
-    private void jTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTActionPerformed
+    private void jT_dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jT_dActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTActionPerformed
+    }//GEN-LAST:event_jT_dActionPerformed
 
-    private void jCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCActionPerformed
+    private void jC_dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jC_dActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCActionPerformed
+    }//GEN-LAST:event_jC_dActionPerformed
 
     private void ingBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio2ActionPerformed
-        this.areaProcesamiento.setText("Procesando..."+"\n");
-        String area="";
-        File archivos;
-        for(int a=imagenes.getTamaño()-1;a>=0;a--){    //CICLO PARA TODAS LA IMAGNES
-            System.out.println(imagenes.obtenerNodo(a));
-            archivos=(File) imagenes.obtenerNodo(a);
-            //area=archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-            System.out.println(area);
-            if(this.jU.isSelected()==true){
-                generador.jpgToBmp(archivos);
-                area="JPG A BMP O VICERVERSA: "+archivos.getName()+'\n';//QUITA TODO DEJA SOLO EL NOMBRE
-                this.areaProcesamiento.append(area);//LO AGRAGA 
-            }else if(this.jD.isSelected()==true){
-                generador.copia(archivos);
-                area="COPIA JPG: "+archivos.getName()+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jT.isSelected()==true){
-                generador.redGreenBlue(archivos);
-                area="ROJO VERDE AZUL SEPIA: "+archivos.getName()+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jC.isSelected()==true){
-                generador.modificarImagen(archivos);
-                area="ROTAR: "+archivos.getName()+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jCin.isSelected()==true){
-                generador.blancoNegro(archivos);
-                area="BLANCO NEGRO: "+archivos.getName()+'\n';
-                this.areaProcesamiento.append(area);
-            }else{
-                JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
-            }
-        }
+        porcentajeLifo lifo= new porcentajeLifo(imagenes);
+        lifo.start();
     }//GEN-LAST:event_ingBiblio2ActionPerformed
 
     private void ingBiblio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio3ActionPerformed
         this.areaProcesamiento.setText("Procesando..."+"\n");
-        if(this.jU.isSelected()==true){
+        procesoMulti dos= new procesoMulti(imagenes);
+        dos.nel();
+        if(this.jU_d.isSelected()==true){
            
         }
-        else if(this.jD.isSelected()==true){
+        else if(this.jD_d.isSelected()==true){
            
         }
-        else if(this.jT.isSelected()==true){
-            procesoMulti dos= new procesoMulti(imagenes);
-            dos.nel();
+        else if(this.jT_d.isSelected()==true){
+            
         }
-        else if(this.jC.isSelected()==true){
+        else if(this.jC_d.isSelected()==true){
           
         }
-        else if(this.jCin.isSelected()==true){
+        else if(this.jCin_d.isSelected()==true){
            
         }
         else{
-            JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
+            //JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
         }
     }//GEN-LAST:event_ingBiblio3ActionPerformed
 
     private void ingBiblio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio4ActionPerformed
-        this.areaProcesamiento.setText("Procesando..."+"\n");
-        String area="";
-        File archivos;
-        for(int a=0;a<imagenes.getTamaño();a++){    //CICLO PARA TODAS LA IMAGNES
-            System.out.println(imagenes.obtenerNodo(a));
-            archivos=(File) imagenes.obtenerNodo(a);
-            //area=archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-            int porcentaje=(100*(a+1))/imagenes.getTamaño();
-            porcent.setValue(porcentaje);
-            
-            System.out.println(area);
-            if(this.jU.isSelected()==true){
-                generador.jpgToBmp(archivos);
-                area="JPG A BMP O VICERVERSA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jD.isSelected()==true){
-                generador.copia(archivos);
-                area="COPIA JPG: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jT.isSelected()==true){
-                generador.redGreenBlue(archivos);
-                area="ROJO VERDE AZUL SEPIA: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jC.isSelected()==true){
-                generador.modificarImagen(archivos);
-                area="ROTAR: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.areaProcesamiento.append(area);
-            }else if(this.jCin.isSelected()==true){
-                generador.blancoNegro(archivos);
-                area="BLANCO NEGRO: "+archivos.getPath().substring(archivos.getPath().lastIndexOf("\\")+1,archivos.getPath().lastIndexOf(".")+4)+'\n';
-                this.areaProcesamiento.append(area);
-            }else{
-                JOptionPane.showMessageDialog(null, "NO ELEIGIO UNA OPCION");
-            }
-            
-        }
+        porcentajeFifo fifo= new porcentajeFifo(imagenes);//EJECTUA EL METODO EN HILOS
+        fifo.start();
     }//GEN-LAST:event_ingBiblio4ActionPerformed
 
     private void ingBiblio5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio5ActionPerformed
@@ -424,20 +361,20 @@ public class Convertidor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.TextArea areaProcesamiento;
+    public static java.awt.TextArea areaProcesamiento;
     private javax.swing.JButton ingBiblio2;
     private javax.swing.JButton ingBiblio3;
     private javax.swing.JButton ingBiblio4;
     private javax.swing.JButton ingBiblio5;
     private javax.swing.JButton ingBiblio6;
     private javax.swing.JButton jButton6;
-    private javax.swing.JRadioButton jC;
+    public static javax.swing.JRadioButton jC_d;
     private javax.swing.JComboBox<String> jCarpeta;
-    private javax.swing.JRadioButton jCin;
-    private javax.swing.JRadioButton jD;
+    public static javax.swing.JRadioButton jCin_d;
+    public static javax.swing.JRadioButton jD_d;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jT;
-    private javax.swing.JRadioButton jU;
+    public static javax.swing.JRadioButton jT_d;
+    public static javax.swing.JRadioButton jU_d;
     private javax.swing.JComboBox<String> jUsuario;
     private javax.swing.JLabel nombreUsuario;
     private javax.swing.JLabel nombreUsuario1;

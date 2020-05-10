@@ -1,5 +1,5 @@
 
-package fotos.Apoyo;
+package Hilos;
 
 import fotos.Listas.dobleEnlaCir;
 import java.io.File;

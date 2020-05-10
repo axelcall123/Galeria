@@ -8,7 +8,6 @@ import java.awt.Image;
 import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
@@ -368,7 +367,7 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
     
     
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-
+        
        //bin.writeObject(usuario);
         /*while(carpeta.getTamaño()!=0){
             carpeta.eliminar(0);
