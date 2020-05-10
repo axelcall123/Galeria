@@ -1,5 +1,8 @@
 package fotos;
 
+import fotos.Apoyo.JTemp;
+import fotos.ImageHandler.BinManager;
+import fotos.Listas.Enlazada;
 import static fotos.vPrincipal.usuariosID;
 import java.awt.Image;
 import java.io.File;
@@ -244,10 +247,10 @@ public class ingresarBiblioteca extends javax.swing.JFrame {
         ventana.Cargar.setFileFilter(filtro);//FILTRO DE IMAGENES
         int resulta = ventana.Cargar.showOpenDialog(null);//DEVULVE UN ENTERO
         
-        File[] archivos = ventana.Cargar.getSelectedFiles();
+        File[] archivos = ventana.Cargar.getSelectedFiles();//ARERGLO PARA TODAS LA IMAGENSE SELECCIONADAS
         for(int i=0;i<archivos.length;i++){
             //URLS
-            archivo=archivos[i];
+            archivo=archivos[i];//JALAR SOLO UN ARCHIVO
             String url = archivo.getPath();//URL
             //String nuevaUrl=url.substring(url.lastIndexOf("D:")+0,+url.lastIndexOf(".jpg"))+".bmp";
             String nuevaUrl="DES\\"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".jpg";//DA LO MISM JPG O BMP

@@ -1,5 +1,6 @@
 
 package fotos;
+import fotos.Apoyo.opcionesConvertir;
 import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -154,16 +155,6 @@ public class editor extends javax.swing.JFrame {
         int resulta = ventana.Cargar.showOpenDialog(null);//DEVULVE UN ENTERO
         archivo = ventana.Cargar.getSelectedFile();
         this.url.setText(archivo.getPath());
-        ///////////////////////////////////
-        /*String url = archivo.getPath();
-        String nuevaUrl="BMP\\"+"int-"+url.substring(url.lastIndexOf("\\")+1,+url.lastIndexOf(".jpg"))+".bmp";
-        Convertir conv = new Convertir();
-         try {
-            boolean result = conv.convertFormat(url,nuevaUrl, "BMP");
-        } catch (IOException ex) {
-            System.out.println("ERROR");
-            ex.printStackTrace();
-        }*/
     }//GEN-LAST:event_jButton2ActionPerformed
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

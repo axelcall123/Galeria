@@ -1,4 +1,9 @@
 package fotos;
+import fotos.Apoyo.ParaAlmacen;
+import fotos.Apoyo.JTemp;
+import fotos.Listas.dobleEnlazada;
+import fotos.Listas.dobleEnlaCir;
+import fotos.Listas.Enlazada;
 import static fotos.ingresarBiblioteca.bin;
 /*import static fotos.ingresarBiblioteca.carpeta;
 import static fotos.ingresarBiblioteca.idImagen;

@@ -1,5 +1,9 @@
 package fotos;
 
+import fotos.ImageHandler.BmpHandlerCopy;
+import fotos.Listas.dobleEnlazada;
+import fotos.Listas.dobleEnlaCir;
+import fotos.Listas.Enlazada;
 import static fotos.ingresarBiblioteca.bin;
 import java.io.File;
 import java.util.logging.Level;
