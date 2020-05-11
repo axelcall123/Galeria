@@ -1,7 +1,13 @@
 package fotos;
 
+import fotos.Hilos.procesoMultiRgb;
+import fotos.Hilos.procesoMultiModificar;
+import fotos.Hilos.porcentajeFifo;
+import fotos.Hilos.procesoMultiBW;
+import fotos.Hilos.procesoMulticopiaJpg;
+import fotos.Hilos.porcentajeLifo;
+import fotos.Hilos.procesoMultiJpgToBmp;
 import fotos.Apoyo.opcionesConvertir;
-import Hilos.*;
 import fotos.Listas.dobleEnlaCir;
 import static fotos.ingresarBiblioteca.usuario;
 import java.io.File;

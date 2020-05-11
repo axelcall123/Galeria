@@ -1,5 +1,5 @@
 
-package Hilos;
+package fotos.Hilos;
 
 import fotos.Apoyo.opcionesConvertir;
 import fotos.Listas.dobleEnlaCir;

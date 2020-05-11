@@ -1,8 +1,8 @@
 
-package Hilos;
+package fotos.Hilos;
 
 
-import static Hilos.procesoMultiRgb.a;
+import static fotos.Hilos.procesoMultiRgb.a;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.File;

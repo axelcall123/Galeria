@@ -1,5 +1,5 @@
 
-package Hilos;
+package fotos.Hilos;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

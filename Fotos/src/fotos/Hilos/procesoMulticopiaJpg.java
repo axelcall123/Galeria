@@ -1,6 +1,6 @@
-package Hilos;
+package fotos.Hilos;
 
-import static Hilos.procesoMultiJpgToBmp.a;
+import static fotos.Hilos.procesoMultiJpgToBmp.a;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
