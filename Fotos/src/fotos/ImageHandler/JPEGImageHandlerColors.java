@@ -39,9 +39,8 @@ public class JPEGImageHandlerColors extends ImageHandler {
             Color colorOriginal;
             String obtenerNombre,nuevaUrl,JPG;
             File outputfile;
-            String url=copyname;
            // boolean result;
-            obtenerNombre=url.substring(url.lastIndexOf("\\")+1,url.lastIndexOf(".")+4);             
+            obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);             
             
             //COLOR ROJO
             for(int a=0;a<imagenRojo.getWidth();a++){
@@ -113,6 +112,7 @@ public class JPEGImageHandlerColors extends ImageHandler {
             
             System.out.println("Imagen creada: " + this.handledFileName);
             System.out.println("se acabo"); 
+            JPEGHandler ja= new JPEGHandler();
 	}        
 }
 /*/*IMAGEN AZUL imagenActual.setRGB(a, b,promedio);

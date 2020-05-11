@@ -68,13 +68,13 @@ public class JPEGImageHandlerRotator extends ImageHandler {
                 y=0;
                 x--;
             }    
-            obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);
+            //obtenerNombre=copyname.substring(copyname.lastIndexOf("\\")+1,copyname.lastIndexOf(".")+4);
             nuevaUrl="TEMP\\JPG\\"+"Vrotation-"+obtenerNombre;
             JPG=nuevaUrl.substring(nuevaUrl.lastIndexOf("\\")+1,+nuevaUrl.lastIndexOf(".bmp"))+".jpg";
             nuevaUrl="TEMP\\JPG\\"+JPG;
             outputfile = new File(nuevaUrl);
             result=ImageIO.write(nueva, "jpg", outputfile);
-            
+            JPEGHandler ja= new JPEGHandler();
             
             System.out.println("se acabo");
 	}        

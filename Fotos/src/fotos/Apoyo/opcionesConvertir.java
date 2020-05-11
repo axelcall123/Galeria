@@ -12,11 +12,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class opcionesConvertir {
+public class opcionesConvertir{
     
     public void jpgToBmp(File archivo){
-        String nombre = archivo.getName();//OBTENER EL NOMBRE
-        String extension = nombre.substring(nombre.lastIndexOf(".") + 1);//VER SU EXTENSION
+        String extension = archivo.getName().substring(archivo.getName().lastIndexOf(".") + 1);//VER SU EXTENSION
         if (extension.toUpperCase().equals("JPG")) {//CONVIERTE UNA IMAGEN JPG A BMP                   
             JPEGtoBMPImage bmp = new JPEGtoBMPImage(archivo.getPath().toString());
             try {

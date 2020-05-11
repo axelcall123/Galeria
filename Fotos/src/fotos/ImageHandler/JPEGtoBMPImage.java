@@ -28,6 +28,7 @@ public class JPEGtoBMPImage extends ImageHandler {
             File outputfile = new File(copyname); //CREA EL BMP
             boolean result=ImageIO.write(input_image, "BMP", outputfile);
             System.out.println("Imagen generada: " + copyname);
+            JPEGHandler ja= new JPEGHandler();
 	}
 }
 /*MANERA DE HACERLO

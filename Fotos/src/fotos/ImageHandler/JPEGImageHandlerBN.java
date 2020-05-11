@@ -52,7 +52,7 @@ public class JPEGImageHandlerBN extends ImageHandler {
              nuevaUrl="TEMP\\JPG\\"+JPG;
              outputfile = new File(nuevaUrl);
              result=ImageIO.write(imagenActual, "jpg", outputfile);//REGRESA UNA JPG
-             
+             JPEGHandler ja= new JPEGHandler();
             
 	}        
 }

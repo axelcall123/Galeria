@@ -11,7 +11,7 @@ import java.io.*;
 *   @author Jorge Daniel Monterroso Nowell - @jorged104
 *	@version 1.0
 **/
-public abstract class ImageHandler {
+public abstract class ImageHandler{
     
 	/* NO CAMBIE ESTE CODIGO */
 	/**

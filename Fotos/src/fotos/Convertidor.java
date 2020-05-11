@@ -1,15 +1,13 @@
 package fotos;
 
-import Hilos.porcentajeFifo;
-import Hilos.porcentajeLifo;
 import fotos.Apoyo.opcionesConvertir;
-import Hilos.procesoMulti;
+import Hilos.*;
 import fotos.Listas.dobleEnlaCir;
 import static fotos.ingresarBiblioteca.usuario;
 import java.io.File;
 import javax.swing.JOptionPane;
 
-public class Convertidor extends javax.swing.JFrame {    
+public class Convertidor extends javax.swing.JFrame{    
     public Convertidor() {
         initComponents();
         for(int z=0;z<usuario.getTamaño();z++){
@@ -176,13 +174,17 @@ public class Convertidor extends javax.swing.JFrame {
                                 .addGap(70, 70, 70)
                                 .addComponent(jButton6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(areaProcesamiento, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)))
+                        .addComponent(areaProcesamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 27, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(areaProcesamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -214,11 +216,10 @@ public class Convertidor extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton6)
-                            .addComponent(ingBiblio5)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(areaProcesamiento, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(26, 26, 26)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(ingBiblio5)))))
+                .addGap(12, 12, 12)
                 .addComponent(porcent, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 15, Short.MAX_VALUE))
         );
@@ -259,35 +260,56 @@ public class Convertidor extends javax.swing.JFrame {
     }//GEN-LAST:event_jC_dActionPerformed
 
     private void ingBiblio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio2ActionPerformed
+        porcent.setValue(0);
         porcentajeLifo lifo= new porcentajeLifo(imagenes);
         lifo.start();
     }//GEN-LAST:event_ingBiblio2ActionPerformed
 
     private void ingBiblio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio3ActionPerformed
-        this.areaProcesamiento.setText("Procesando..."+"\n");
-        procesoMulti dos= new procesoMulti(imagenes);
-        dos.nel();
+        this.areaProcesamiento.setText("Procesando..."+"\n");//INCIALIZAR
+        porcent.setValue(0);
         if(this.jU_d.isSelected()==true){
-           
+            procesoMultiJpgToBmp[] vec= new procesoMultiJpgToBmp[imagenes.getTamaño()];
+            for(int a=0;a<vec.length;a++){
+                vec[a] = new procesoMultiJpgToBmp((File) imagenes.obtenerNodo(a),imagenes.getTamaño());
+                vec[a].start();
+            }
         }
-        else if(this.jD_d.isSelected()==true){
-           
+        else if(this.jD_d.isSelected()==true){//INCIALIZAR
+            procesoMulticopiaJpg[] vec= new procesoMulticopiaJpg[imagenes.getTamaño()];
+            for(int a=0;a<vec.length;a++){
+                vec[a] = new procesoMulticopiaJpg((File) imagenes.obtenerNodo(a),imagenes.getTamaño());
+                vec[a].start();
+            }
         }
         else if(this.jT_d.isSelected()==true){
-            
+            procesoMultiRgb[] vec= new procesoMultiRgb[imagenes.getTamaño()];
+            for(int a=0;a<vec.length;a++){
+                vec[a] = new procesoMultiRgb((File) imagenes.obtenerNodo(a),imagenes.getTamaño());
+                vec[a].start();
+            }
         }
         else if(this.jC_d.isSelected()==true){
-          
+            procesoMultiModificar[] vec= new procesoMultiModificar[imagenes.getTamaño()];
+            for(int a=0;a<vec.length;a++){
+                vec[a] = new procesoMultiModificar((File) imagenes.obtenerNodo(a),imagenes.getTamaño());
+                vec[a].start();
+            }
         }
         else if(this.jCin_d.isSelected()==true){
-           
+            procesoMultiBW[] vec= new procesoMultiBW[imagenes.getTamaño()];
+            for(int a=0;a<vec.length;a++){
+                vec[a] = new procesoMultiBW((File) imagenes.obtenerNodo(a),imagenes.getTamaño());
+                vec[a].start();
+            }
         }
         else{
-            //JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
+            JOptionPane.showMessageDialog(null, "NO ELIGIO UNA OPCION");
         }
     }//GEN-LAST:event_ingBiblio3ActionPerformed
 
     private void ingBiblio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ingBiblio4ActionPerformed
+        porcent.setValue(0);
         porcentajeFifo fifo= new porcentajeFifo(imagenes);//EJECTUA EL METODO EN HILOS
         fifo.start();
     }//GEN-LAST:event_ingBiblio4ActionPerformed

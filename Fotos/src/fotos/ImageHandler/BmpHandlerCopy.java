@@ -40,7 +40,7 @@ public class BmpHandlerCopy extends ImageHandler {
 		output.write(filebytes);
 		output.close();
 		System.out.println("Imagen generada: " + copyname);
-                
+                JPEGHandler ja= new JPEGHandler();
 	}
         
         
