@@ -18,14 +18,6 @@
             </bookmark>
         </file>
         <file>
-            <url>src/fotos/JPEGImageHandlerColors.java</url>
-            <bookmark id="3">
-                <name/>
-                <line>0</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>src/fotos/dobleEnlaCir.java</url>
             <bookmark id="1">
                 <name/>
@@ -33,10 +25,16 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>src/fotos/JPEGImageHandlerColors.java</url>
+            <bookmark id="3">
+                <name/>
+                <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/D:/AXEL/DOCUMENTOS/U/GITHUB/Galeria/Fotos/src/fotos/Pruebas/Convertir.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

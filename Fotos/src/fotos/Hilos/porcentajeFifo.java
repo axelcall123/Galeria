@@ -41,7 +41,7 @@ public class porcentajeFifo extends Thread{
                 generador.modificarImagen(archivos);
                 area="ROTAR: "+archivos.getName()+'\n';
                 fotos.Convertidor.areaProcesamiento.append(area);
-            }else if(fotos.Convertidor.jCin_d.isSelected()==true){
+              }else if(fotos.Convertidor.jCin_d.isSelected()==true){
                 generador.blancoNegro(archivos);
                 area="BLANCO NEGRO: "+archivos.getName()+'\n';
                 fotos.Convertidor.areaProcesamiento.append(area);
